@@ -1,0 +1,27 @@
+# 项目规则与经验总结
+
+## 在 Cursor 内置浏览器中预览本地 HTML
+
+### 问题现象
+- 用 **Simple Browser: Show** 打开 `http://localhost:4173/stars_ai_preview.html` 时出现 **ERR_EMPTY_RESPONSE（Error Code: -324）**，页面空白。
+- 用 `file:///c:/...` 会变成 `https://file///c:/...`，同样失败。
+
+### 原因简述
+1. **Simple Browser 不支持 file://**  
+   输入会被当成相对地址并自动加上 `https://`，导致无效 URL。
+2. **必须用本地 HTTP 服务**  
+   预览需先在本机起一个 HTTP 服务器（如 `python -m http.server 4173`），再用 `http://...` 打开。
+3. **Simple Browser 访问 localhost 不稳定**  
+   Simple Browser 跑在 Electron 的 webview 里，在某些环境下访问 `localhost` 会连接被关闭、返回空响应（-324），属于已知限制。
+4. **任务里用 `${input:command}` 在 Cursor 会报错**  
+   任务会被当成 shell 任务，把“命令”当可执行文件路径，导致“路径不存在”。
+
+### 可行做法
+- **服务器**：在项目目录执行 `python -m http.server 4173 --bind 127.0.0.1`（建议绑定 127.0.0.1）。
+- **优先试 127.0.0.1**：在 Simple Browser 里用 `http://127.0.0.1:4173/xxx.html`，有时比 `localhost` 更稳定。
+- **若仍 -324**：用系统默认浏览器打开同一地址即可（服务器在跑时直接访问 `http://127.0.0.1:4173/xxx.html`）。
+- **任务**：用“启动服务器”的 shell 任务 + 单独“在系统浏览器中打开”的 shell 任务，不要用 `input type: command` 去调 Simple Browser。
+
+### 一句话总结
+**问题**：Cursor 内置 Simple Browser 不能直接用 file://，且访问 localhost 时易出现 ERR_EMPTY_RESPONSE（-324）。  
+**解决**：用本机 HTTP 服务 + `http://127.0.0.1:端口/文件`；若内置浏览器仍报错，用系统浏览器打开同一 URL 即可。
