@@ -330,6 +330,210 @@ function SectionTitle({ tag, title, subtitle }) {
   );
 }
 
+function AuthModal({
+  visible,
+  onClose,
+  onStart,
+  defaultRegion = "cn",
+  onWeChatLogin,
+  onGoogleLogin,
+  onAppleLogin,
+  onMicrosoftLogin,
+}) {
+  const [region, setRegion] = useState(defaultRegion); // "cn" | "global"
+
+  if (!visible) return null;
+
+  const safeCall = (fn, label) => {
+    if (typeof fn === "function") {
+      fn();
+    } else {
+      console.log(`点击了 ${label} 登录（占位）`);
+    }
+    onStart?.("免费试用");
+  };
+
+  const renderChinaRegion = () => (
+    <div style={{ marginTop: 8 }}>
+      <div style={{ marginBottom: 16, fontSize: 13, color: "#4b5563" }}>使用微信扫码登录，适用于中国大陆地区用户</div>
+      <div style={{ marginBottom: 16, padding: 16, borderRadius: 16, border: "1px dashed #e5e7eb", background: "#f9fafb", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <div style={{ width: 160, height: 160, borderRadius: 16, background: "repeating-linear-gradient(45deg, #e5e7eb, #e5e7eb 6px, #f9fafb 6px, #f9fafb 12px)", display: "flex", alignItems: "center", justifyContent: "center", color: "#9ca3af", fontSize: 12 }}>
+          微信二维码占位
+        </div>
+      </div>
+      <button
+        onClick={() => safeCall(onWeChatLogin, "微信")}
+        style={{
+          width: "100%",
+          padding: "12px 16px",
+          borderRadius: 12,
+          border: "none",
+          fontSize: 14,
+          fontWeight: 600,
+          cursor: "pointer",
+          fontFamily: "inherit",
+          background: "#22c55e",
+          color: "#ffffff",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 8,
+          marginBottom: 8,
+        }}
+      >
+        <span style={{ fontSize: 16 }}>💚</span>
+        微信扫码登录并开始体验
+      </button>
+      <div style={{ fontSize: 11, color: "#9ca3af", marginTop: 4 }}>扫码仅用于安全登录，不会泄露你的聊天或业务数据。</div>
+    </div>
+  );
+
+  const renderGlobalRegion = () => (
+    <div style={{ marginTop: 8 }}>
+      <div style={{ marginBottom: 16, fontSize: 13, color: "#4b5563" }}>使用常用账号快速登录，适用于非中国大陆地区用户</div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 8 }}>
+        <button
+          onClick={() => safeCall(onGoogleLogin, "Google")}
+          style={{
+            width: "100%",
+            padding: "10px 14px",
+            borderRadius: 999,
+            border: "1px solid #e5e7eb",
+            fontSize: 14,
+            fontWeight: 500,
+            cursor: "pointer",
+            fontFamily: "inherit",
+            background: "#ffffff",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 8,
+          }}
+        >
+          <span style={{ fontSize: 16 }}>🟢</span>
+          使用 Google 登录
+        </button>
+        <button
+          onClick={() => safeCall(onAppleLogin, "Apple")}
+          style={{
+            width: "100%",
+            padding: "10px 14px",
+            borderRadius: 999,
+            border: "1px solid #111827",
+            fontSize: 14,
+            fontWeight: 500,
+            cursor: "pointer",
+            fontFamily: "inherit",
+            background: "#111827",
+            color: "#ffffff",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 8,
+          }}
+        >
+          <span style={{ fontSize: 16 }}></span>
+          使用 Apple ID 登录
+        </button>
+        <button
+          onClick={() => safeCall(onMicrosoftLogin, "Microsoft")}
+          style={{
+            width: "100%",
+            padding: "10px 14px",
+            borderRadius: 999,
+            border: "1px solid #e5e7eb",
+            fontSize: 14,
+            fontWeight: 500,
+            cursor: "pointer",
+            fontFamily: "inherit",
+            background: "#ffffff",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 8,
+          }}
+        >
+          <span style={{ fontSize: 16 }}>🪟</span>
+          使用 Microsoft 账号登录
+        </button>
+      </div>
+      <div style={{ fontSize: 11, color: "#9ca3af", marginTop: 4 }}>暂未真正接入第三方登录，本区域为交互占位，后续可接入 OAuth。</div>
+    </div>
+  );
+
+  return (
+    <div style={{ position: "fixed", inset: 0, zIndex: 400, display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
+      <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.5)", cursor: "pointer" }} onClick={onClose} aria-hidden="true" />
+      <div style={{ position: "relative", display: "flex", maxWidth: 520, width: "100%", background: "#ffffff", borderRadius: 24, boxShadow: "0 24px 64px rgba(0,0,0,0.2)", overflow: "hidden", border: "1px solid #e5e7eb" }} onClick={(e) => e.stopPropagation()}>
+        <div style={{ width: 160, flexShrink: 0, background: "linear-gradient(180deg, rgba(41,113,235,0.08), rgba(41,113,235,0.02))", display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
+          <img src="assets/ai-avatar.png" alt="" style={{ width: 96, height: 96, borderRadius: "50%", objectFit: "cover", boxShadow: "0 0 24px rgba(41,113,235,0.45)" }} />
+        </div>
+        <div style={{ flex: 1, padding: "28px 26px" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+            <div>
+              <div style={{ fontSize: 14, fontWeight: 600, color: "#6b7280", marginBottom: 2 }}>注册 / 登录</div>
+              <div style={{ fontSize: 18, fontWeight: 700, color: "#111827" }}>开始你的 30 天免费试用</div>
+            </div>
+            <button onClick={onClose} style={{ background: "none", border: "none", fontSize: 20, cursor: "pointer", color: "#9ca3af", padding: 4 }} aria-label="关闭">
+              ×
+            </button>
+          </div>
+
+          <div style={{ marginBottom: 12, fontSize: 12, color: "#6b7280" }}>根据你所在地区选择登录方式：</div>
+          <div style={{ display: "flex", gap: 8, marginBottom: 8 }}>
+            <button
+              onClick={() => setRegion("cn")}
+              style={{
+                flex: 1,
+                padding: "8px 10px",
+                borderRadius: 999,
+                border: "1px solid",
+                borderColor: region === "cn" ? "rgb(41,113,235)" : "#e5e7eb",
+                background: region === "cn" ? "rgba(41,113,235,0.08)" : "#ffffff",
+                fontSize: 13,
+                fontWeight: 600,
+                cursor: "pointer",
+                color: region === "cn" ? "rgb(37,99,235)" : "#4b5563",
+                fontFamily: "inherit",
+              }}
+            >
+              中国大陆
+            </button>
+            <button
+              onClick={() => setRegion("global")}
+              style={{
+                flex: 1,
+                padding: "8px 10px",
+                borderRadius: 999,
+                border: "1px solid",
+                borderColor: region === "global" ? "rgb(41,113,235)" : "#e5e7eb",
+                background: region === "global" ? "rgba(41,113,235,0.08)" : "#ffffff",
+                fontSize: 13,
+                fontWeight: 600,
+                cursor: "pointer",
+                color: region === "global" ? "rgb(37,99,235)" : "#4b5563",
+                fontFamily: "inherit",
+              }}
+            >
+              其他地区
+            </button>
+          </div>
+
+          {region === "cn" ? renderChinaRegion() : renderGlobalRegion()}
+
+          <div style={{ fontSize: 11, color: "#9ca3af", marginTop: 16, lineHeight: 1.6 }}>
+            点击登录即表示你已阅读并同意
+            <span style={{ color: "rgb(41,113,235)", cursor: "pointer", marginLeft: 4 }}>《用户协议》</span>
+            和
+            <span style={{ color: "rgb(41,113,235)", cursor: "pointer", marginLeft: 4 }}>《隐私政策》</span>
+            。
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Nav({ onTrial, onPrice }) {
   return (
     <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 200, padding: "0 32px", height: 60, display: "flex", alignItems: "center", borderBottom: "1px solid rgba(41,113,235,0.08)", background: "rgba(255,255,255,0.9)", backdropFilter: "blur(24px)" }}>
@@ -620,36 +824,11 @@ export default function StarsAI() {
             {upgradeContent}
           </div>
         </div>
-        {showAuthModal && (
-          <div style={{ position: "fixed", inset: 0, zIndex: 400, display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
-            <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.5)", cursor: "pointer" }} onClick={() => setShowAuthModal(false)} aria-hidden="true" />
-            <div style={{ position: "relative", display: "flex", maxWidth: 440, width: "100%", background: "#fff", borderRadius: 24, boxShadow: "0 24px 64px rgba(0,0,0,0.2)", overflow: "hidden", border: "1px solid #e5e7eb" }} onClick={(e) => e.stopPropagation()}>
-              <div style={{ width: 140, flexShrink: 0, background: "linear-gradient(180deg, rgba(41,113,235,0.08), rgba(41,113,235,0.02))", display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
-                <img src="assets/ai-avatar.png" alt="" style={{ width: 88, height: 88, borderRadius: "50%", objectFit: "cover" }} />
-              </div>
-              <div style={{ flex: 1, padding: "32px 28px" }}>
-                <div style={{ display: "flex", gap: 8, marginBottom: 24 }}>
-                  <button onClick={() => setAuthTab("login")} style={{ padding: "8px 16px", borderRadius: 10, border: "none", fontSize: 14, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", background: authTab === "login" ? "rgb(41,113,235)" : "transparent", color: authTab === "login" ? "#fff" : "#6b7280" }}>登录</button>
-                  <button onClick={() => setAuthTab("register")} style={{ padding: "8px 16px", borderRadius: 10, border: "none", fontSize: 14, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", background: authTab === "register" ? "rgb(41,113,235)" : "transparent", color: authTab === "register" ? "#fff" : "#6b7280" }}>注册</button>
-                </div>
-                {authTab === "login" ? (
-                  <>
-                    <input type="text" placeholder="手机号 / 邮箱" style={{ width: "100%", padding: "12px 14px", borderRadius: 10, border: "1px solid #e5e7eb", fontSize: 14, marginBottom: 12, fontFamily: "inherit", boxSizing: "border-box" }} />
-                    <input type="password" placeholder="密码" style={{ width: "100%", padding: "12px 14px", borderRadius: 10, border: "1px solid #e5e7eb", fontSize: 14, marginBottom: 20, fontFamily: "inherit", boxSizing: "border-box" }} />
-                  </>
-                ) : (
-                  <>
-                    <input type="text" placeholder="手机号 / 邮箱" style={{ width: "100%", padding: "12px 14px", borderRadius: 10, border: "1px solid #e5e7eb", fontSize: 14, marginBottom: 12, fontFamily: "inherit", boxSizing: "border-box" }} />
-                    <input type="password" placeholder="设置密码" style={{ width: "100%", padding: "12px 14px", borderRadius: 10, border: "1px solid #e5e7eb", fontSize: 14, marginBottom: 12, fontFamily: "inherit", boxSizing: "border-box" }} />
-                    <input type="password" placeholder="确认密码" style={{ width: "100%", padding: "12px 14px", borderRadius: 10, border: "1px solid #e5e7eb", fontSize: 14, marginBottom: 20, fontFamily: "inherit", boxSizing: "border-box" }} />
-                  </>
-                )}
-                <button onClick={() => doStartOnboarding()} style={{ width: "100%", padding: "14px 20px", borderRadius: 12, border: "none", fontSize: 14, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", background: "rgb(41,113,235)", color: "#fff" }}>{authTab === "login" ? "登录并开始" : "注册并开始"}</button>
-                <button onClick={() => setShowAuthModal(false)} style={{ marginTop: 12, width: "100%", padding: "10px", border: "none", background: "none", fontSize: 13, color: "#9ca3af", cursor: "pointer", fontFamily: "inherit" }}>取消</button>
-              </div>
-            </div>
-          </div>
-        )}
+        <AuthModal
+          visible={showAuthModal}
+          onClose={() => setShowAuthModal(false)}
+          onStart={doStartOnboarding}
+        />
       </>
     );
   }
@@ -901,37 +1080,12 @@ export default function StarsAI() {
 
         <div style={{ position: "fixed", bottom: 20, right: 20, fontSize: 13, color: "rgba(255,255,255,0.4)", cursor: "pointer", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)", padding: "6px 14px", borderRadius: 20, zIndex: 100, backdropFilter: "blur(8px)" }}>🌐 中文</div>
         </div>
-        {/* 注册/登录弹窗：通过后才进入 onboarding */}
-        {showAuthModal && (
-          <div style={{ position: "fixed", inset: 0, zIndex: 400, display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
-            <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.5)", cursor: "pointer" }} onClick={() => setShowAuthModal(false)} aria-hidden="true" />
-            <div style={{ position: "relative", display: "flex", maxWidth: 440, width: "100%", background: "#fff", borderRadius: 24, boxShadow: "0 24px 64px rgba(0,0,0,0.2)", overflow: "hidden", border: "1px solid #e5e7eb" }} onClick={(e) => e.stopPropagation()}>
-              <div style={{ width: 140, flexShrink: 0, background: "linear-gradient(180deg, rgba(41,113,235,0.08), rgba(41,113,235,0.02))", display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
-                <img src="assets/ai-avatar.png" alt="" style={{ width: 88, height: 88, borderRadius: "50%", objectFit: "cover" }} />
-              </div>
-              <div style={{ flex: 1, padding: "32px 28px" }}>
-                <div style={{ display: "flex", gap: 8, marginBottom: 24 }}>
-                  <button onClick={() => setAuthTab("login")} style={{ padding: "8px 16px", borderRadius: 10, border: "none", fontSize: 14, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", background: authTab === "login" ? "rgb(41,113,235)" : "transparent", color: authTab === "login" ? "#fff" : "#6b7280" }}>登录</button>
-                  <button onClick={() => setAuthTab("register")} style={{ padding: "8px 16px", borderRadius: 10, border: "none", fontSize: 14, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", background: authTab === "register" ? "rgb(41,113,235)" : "transparent", color: authTab === "register" ? "#fff" : "#6b7280" }}>注册</button>
-                </div>
-                {authTab === "login" ? (
-                  <>
-                    <input type="text" placeholder="手机号 / 邮箱" style={{ width: "100%", padding: "12px 14px", borderRadius: 10, border: "1px solid #e5e7eb", fontSize: 14, marginBottom: 12, fontFamily: "inherit", boxSizing: "border-box" }} />
-                    <input type="password" placeholder="密码" style={{ width: "100%", padding: "12px 14px", borderRadius: 10, border: "1px solid #e5e7eb", fontSize: 14, marginBottom: 20, fontFamily: "inherit", boxSizing: "border-box" }} />
-                  </>
-                ) : (
-                  <>
-                    <input type="text" placeholder="手机号 / 邮箱" style={{ width: "100%", padding: "12px 14px", borderRadius: 10, border: "1px solid #e5e7eb", fontSize: 14, marginBottom: 12, fontFamily: "inherit", boxSizing: "border-box" }} />
-                    <input type="password" placeholder="设置密码" style={{ width: "100%", padding: "12px 14px", borderRadius: 10, border: "1px solid #e5e7eb", fontSize: 14, marginBottom: 12, fontFamily: "inherit", boxSizing: "border-box" }} />
-                    <input type="password" placeholder="确认密码" style={{ width: "100%", padding: "12px 14px", borderRadius: 10, border: "1px solid #e5e7eb", fontSize: 14, marginBottom: 20, fontFamily: "inherit", boxSizing: "border-box" }} />
-                  </>
-                )}
-                <button onClick={() => doStartOnboarding()} style={{ width: "100%", padding: "14px 20px", borderRadius: 12, border: "none", fontSize: 14, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", background: "rgb(41,113,235)", color: "#fff" }}>{authTab === "login" ? "登录并开始" : "注册并开始"}</button>
-                <button onClick={() => setShowAuthModal(false)} style={{ marginTop: 12, width: "100%", padding: "10px", border: "none", background: "none", fontSize: 13, color: "#9ca3af", cursor: "pointer", fontFamily: "inherit" }}>取消</button>
-              </div>
-            </div>
-          </div>
-        )}
+        {/* 注册/登录弹窗：根据地区选择登录方式 */}
+        <AuthModal
+          visible={showAuthModal}
+          onClose={() => setShowAuthModal(false)}
+          onStart={doStartOnboarding}
+        />
       </>
     );
   }

@@ -308,7 +308,7 @@
         const [trialBannerDismissed, setTrialBannerDismissed] = useState(false);
         const [showUpgradeModal, setShowUpgradeModal] = useState(false);
         const [showAuthModal, setShowAuthModal] = useState(false);
-        const [authTab, setAuthTab] = useState("login");
+        const [authTab, setAuthTab] = useState("register");
         const [showExpandMenu, setShowExpandMenu] = useState(false);
         const [followUpIndex, setFollowUpIndex] = useState(0);
         const [billingCycle, setBillingCycle] = useState("annual");
@@ -494,6 +494,35 @@
                           <input type="password" placeholder="确认密码" style={{ width: "100%", padding: "12px 14px", borderRadius: 10, border: "1px solid #e5e7eb", fontSize: 14, marginBottom: 20, fontFamily: "inherit", boxSizing: "border-box" }} />
                         </>
                       )}
+                      <div style={{ fontSize: 12, color: "#9ca3af", textAlign: "center", marginBottom: 10 }}>或使用全球账号快速开始</div>
+                      <div style={{ display: "flex", justifyContent: "center", gap: 10, marginBottom: 16 }}>
+                        {[
+                          { key: "google", label: "G", bg: "#ffffff", border: "#e5e7eb" },
+                          { key: "apple", label: "", bg: "#111827", border: "#111827", color: "#ffffff" },
+                          { key: "microsoft", label: "MS", bg: "#ffffff", border: "#e5e7eb" },
+                        ].map((p) => (
+                          <button
+                            key={p.key}
+                            type="button"
+                            style={{
+                              width: 36,
+                              height: 36,
+                              borderRadius: "999px",
+                              border: `1px solid ${p.border}`,
+                              background: p.bg,
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              fontSize: p.key === "apple" ? 18 : 13,
+                              fontWeight: 600,
+                              color: p.color || "#111827",
+                              cursor: "pointer",
+                            }}
+                          >
+                            {p.label}
+                          </button>
+                        ))}
+                      </div>
                       <button onClick={() => doStartOnboarding()} style={{ width: "100%", padding: "14px 20px", borderRadius: 12, border: "none", fontSize: 14, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", background: "rgb(41,113,235)", color: "#fff" }}>{authTab === "login" ? "登录并开始" : "注册并开始"}</button>
                       <button onClick={() => setShowAuthModal(false)} style={{ marginTop: 12, width: "100%", padding: "10px", border: "none", background: "none", fontSize: 13, color: "#9ca3af", cursor: "pointer", fontFamily: "inherit" }}>取消</button>
                     </div>
@@ -1468,7 +1497,7 @@
       const [trialBannerDismissed, setTrialBannerDismissed] = useState(false);
       const [showUpgradeModal, setShowUpgradeModal] = useState(false);
       const [showAuthModal, setShowAuthModal] = useState(false);
-      const [authTab, setAuthTab] = useState("login");
+      const [authTab, setAuthTab] = useState("register");
       const [showExpandMenu, setShowExpandMenu] = useState(false);
       const [followUpIndex, setFollowUpIndex] = useState(0);
       const [billingCycle, setBillingCycle] = useState("annual");

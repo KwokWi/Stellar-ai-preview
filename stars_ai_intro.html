@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>了解星辰 AI · 品牌与愿景</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+        font-size: 17px;
+        line-height: 1.47059;
+        font-weight: 400;
+        color: #1d1d1f;
+        background: #fff;
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: #0066cc;
+        text-decoration: none;
+      }
+      a:hover { text-decoration: underline; }
+
+      .page { min-height: 100vh; display: flex; flex-direction: column; }
+
+      /* Nav — 极简顶栏 */
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        height: 48px;
+        padding: 0 22px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba(255,255,255,0.72);
+        backdrop-filter: saturate(180%) blur(20px);
+        -webkit-backdrop-filter: saturate(180%) blur(20px);
+        border-bottom: 1px solid rgba(0,0,0,0.06);
+      }
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 600;
+        font-size: 18px;
+        color: #1d1d1f;
+      }
+      .nav-logo span:first-child { font-size: 22px; }
+      .nav-link {
+        font-size: 14px;
+        color: #0066cc;
+      }
+
+      /* Hero — 大标题 + 一句话 */
+      .hero {
+        padding: 120px 32px 140px;
+        text-align: center;
+      }
+      .hero-badge {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #86868b;
+        margin-bottom: 28px;
+      }
+      .hero-title {
+        font-size: clamp(40px, 8vw, 64px);
+        font-weight: 700;
+        letter-spacing: -0.025em;
+        line-height: 1.12;
+        max-width: 800px;
+        margin: 0 auto 32px;
+        color: #1d1d1f;
+        overflow-wrap: break-word;
+        word-break: break-word;
+        text-wrap: balance;
+      }
+      .hero-lead {
+        font-size: 21px;
+        line-height: 1.5;
+        color: #86868b;
+        max-width: 520px;
+        margin: 0 auto;
+        overflow-wrap: break-word;
+      }
+      .hero-img-wrap {
+        margin-top: 48px;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 24px 60px rgba(0,0,0,0.08);
+      }
+      .hero-img-wrap img {
+        width: 100%;
+        height: auto;
+        display: block;
+        vertical-align: middle;
+      }
+
+      /* 通用 section 容器 */
+      .section {
+        padding: 100px 32px 120px;
+        max-width: 880px;
+        margin: 0 auto;
+      }
+      .section--alt { background: #fbfbfd; }
+
+      .section-label {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #86868b;
+        margin-bottom: 12px;
+      }
+      .section-headline {
+        font-size: clamp(28px, 4vw, 40px);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        color: #1d1d1f;
+        margin: 0 0 24px;
+        overflow-wrap: break-word;
+        word-break: break-word;
+        text-wrap: balance;
+      }
+      .section-body {
+        font-size: 17px;
+        line-height: 1.65;
+        color: #1d1d1f;
+        opacity: 0.88;
+        max-width: 540px;
+      }
+      .section-body p { margin: 0 0 1.2em; }
+      .section-body p:last-child { margin-bottom: 0; }
+      .section-with-img {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 56px;
+        align-items: center;
+      }
+      @media (max-width: 734px) { .section-with-img { grid-template-columns: 1fr; gap: 32px; } }
+      .section-figure {
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 18px 48px rgba(0,0,0,0.06);
+      }
+      .section-figure img { width: 100%; height: auto; display: block; }
+
+      /* 双栏：大标题左 + 正文右 */
+      .split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+        align-items: start;
+        padding: 100px 32px 120px;
+        max-width: 880px;
+        margin: 0 auto;
+      }
+      @media (max-width: 734px) {
+        .split { grid-template-columns: 1fr; gap: 40px; padding: 72px 24px 96px; }
+      }
+      .split--alt { background: #fbfbfd; }
+      .split-title {
+        font-size: clamp(32px, 4vw, 44px);
+        font-weight: 700;
+        letter-spacing: -0.025em;
+        line-height: 1.12;
+        color: #1d1d1f;
+        margin: 0;
+        overflow-wrap: break-word;
+        word-break: break-word;
+        text-wrap: balance;
+      }
+      .split-body { font-size: 17px; line-height: 1.65; color: #1d1d1f; opacity: 0.88; }
+      .split-body p { margin: 0; }
+      .split-figure {
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 18px 48px rgba(0,0,0,0.06);
+      }
+      .split-figure img { width: 100%; height: auto; display: block; }
+
+      /* 三条价值观：无边框卡片 */
+      .values {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+        padding: 56px 0 0;
+      }
+      @media (max-width: 734px) { .values { grid-template-columns: 1fr; gap: 40px; } }
+      .value { padding: 0; }
+      .value-num {
+        font-size: 13px;
+        font-weight: 600;
+        color: #86868b;
+        margin-bottom: 12px;
+      }
+      .value-title {
+        font-size: 19px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        color: #1d1d1f;
+        margin-bottom: 10px;
+      }
+      .value-desc {
+        font-size: 15px;
+        line-height: 1.55;
+        color: #1d1d1f;
+        opacity: 0.85;
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 56px;
+        margin-top: 48px;
+      }
+      @media (max-width: 734px) { .two-col { grid-template-columns: 1fr; gap: 40px; margin-top: 40px; } }
+
+      /* 列表块 */
+      .list-block { margin-bottom: 0; }
+      .list-block h3 {
+        font-size: 19px;
+        font-weight: 600;
+        color: #1d1d1f;
+        margin: 0 0 12px;
+      }
+      .list-block p { margin: 0 0 8px; font-size: 17px; line-height: 1.47; color: #1d1d1f; opacity: 0.9; }
+      .list-block ul { margin: 12px 0 0; padding-left: 1.2em; }
+      .list-block li {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #1d1d1f;
+        opacity: 0.88;
+        margin-bottom: 6px;
+      }
+
+      /* CTA — 苹果式：一句话 + 链接 */
+      .cta-block {
+        text-align: center;
+        padding: 100px 32px 140px;
+      }
+      .cta-headline {
+        font-size: clamp(28px, 4vw, 40px);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        color: #1d1d1f;
+        margin: 0 0 16px;
+        overflow-wrap: break-word;
+        word-break: break-word;
+        text-wrap: balance;
+      }
+      .cta-text {
+        font-size: 19px;
+        line-height: 1.5;
+        color: #86868b;
+        margin: 0 0 32px;
+      }
+      .cta-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 32px;
+      }
+      .cta-links a {
+        font-size: 17px;
+        font-weight: 500;
+        color: #0066cc;
+      }
+
+      /* Footer */
+      footer {
+        padding: 32px 24px 64px;
+        font-size: 12px;
+        color: #86868b;
+        text-align: center;
+        border-top: 1px solid rgba(0,0,0,0.06);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="nav">
+        <a href="stars_ai_preview.html" class="nav-logo">
+          <span>✦</span>
+          <span>星辰 AI</span>
+        </a>
+        <a href="stars_ai_preview.html" class="nav-link">返回体验首页</a>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero-badge">品牌与愿景</div>
+          <h1 class="hero-title">让每一家小企业，都能拥有世界级的管理能力。</h1>
+          <p class="hero-lead">
+            金蝶推出的 AI 原生管理产品。ERP、多端应用与大模型融合，为老板与业务团队提供「数字员工」，随时理解生意、给出决策建议。
+          </p>
+          <div class="hero-img-wrap">
+            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=900&auto=format&fit=crop&q=80" alt="团队协作与智能办公" width="900" height="506" />
+          </div>
+        </section>
+
+        <section class="section section--alt">
+          <div class="section-label">公司简介</div>
+          <h2 class="section-headline">源自金蝶，为成长型企业而生。</h2>
+          <div class="section-with-img">
+            <div class="section-body">
+              <p>源自多年服务成长型企业的实践，团队来自企业管理、产品、AI 与行业顾问等背景。</p>
+              <p>在星辰产品体系下，进销存、财务、税务、经营分析不再只是记账工具，而是能主动提醒风险、发现机会的智能伙伴。</p>
+            </div>
+            <div class="section-figure">
+              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop&q=80" alt="企业协作" width="600" height="400" />
+            </div>
+          </div>
+        </section>
+
+        <div class="split">
+          <div>
+            <h2 class="split-title">我们为谁服务？</h2>
+            <div class="split-body">
+              <p>成长中的小企业老板、财务与运营负责人——关心现金流、利润与库存健康，更关心每一份投入是否值得。</p>
+            </div>
+          </div>
+          <div class="split-figure">
+            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&auto=format&fit=crop&q=80" alt="中小企业经营" width="600" height="400" />
+          </div>
+        </div>
+
+        <div class="split split--alt">
+          <div>
+            <h2 class="split-title">为什么叫「星辰」？</h2>
+            <div class="split-body">
+              <p>每一家认真做生意的小企业，都是夜空中的一颗星。我们用 AI 把这些星星连接起来，让数据发光，让决策更有底气。</p>
+            </div>
+          </div>
+          <div class="split-figure">
+            <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=600&auto=format&fit=crop&q=80" alt="星辰连接" width="600" height="400" />
+          </div>
+        </div>
+
+        <section class="section">
+          <div class="section-label">愿景与使命</div>
+          <h2 class="section-headline">把复杂的管理，变成简单的对话。</h2>
+          <div class="section-with-img">
+            <div class="section-body">
+              <p>让每家企业都拥有一支懂业务的 AI 数字员工团队。软件不只是报表，而是会主动提问、给建议、把复杂问题拆成可执行步骤的伙伴。</p>
+              <p>用 AI 读懂每张单据与流水；让老板开口问「今天赚了多少」；为财务与业务减少重复劳动，把时间还给思考与客户。</p>
+            </div>
+            <div class="section-figure">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&auto=format&fit=crop&q=80" alt="数据与决策" width="600" height="400" />
+            </div>
+          </div>
+        </section>
+
+        <section class="section section--alt">
+          <div class="section-label">我们的原则</div>
+          <h2 class="section-headline">以生意为中心。AI 先做人，再做事。</h2>
+          <div class="section-figure" style="max-width: 720px; margin-bottom: 48px;">
+            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=720&auto=format&fit=crop&q=80" alt="智能工作流" width="720" height="400" />
+          </div>
+          <div class="values">
+            <div class="value">
+              <div class="value-num">01</div>
+              <div class="value-title">以生意为中心</div>
+              <div class="value-desc">从真实业务出发：客户怎么下单、货怎么流转、钱怎么回款。不让你去适应抽象的模块与菜单。</div>
+            </div>
+            <div class="value">
+              <div class="value-num">02</div>
+              <div class="value-title">AI 先做人，再做事</div>
+              <div class="value-desc">数字员工可对话、会解释「为什么这么算」，而不是只给一个数字。</div>
+            </div>
+            <div class="value">
+              <div class="value-num">03</div>
+              <div class="value-title">安全与合规优先</div>
+              <div class="value-desc">延续金蝶在数据安全与财税合规上的经验。放心把真实数据交给星辰，专注生意本身。</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-label">今天做到哪一步了</div>
+          <h2 class="section-headline">已能做的，与正在打磨的。</h2>
+          <div class="two-col">
+            <div class="list-block">
+              <h3>已能帮你做的</h3>
+              <ul>
+                <li>记账、对账、开票、报税自动化</li>
+                <li>实时现金流与利润小结</li>
+                <li>库存健康度与滞销、资金与毛利预警</li>
+                <li>老板看得懂的经营日报与结论</li>
+              </ul>
+            </div>
+            <div class="list-block">
+              <h3>正在打磨的</h3>
+              <ul>
+                <li>更懂行业的智能问答与模板</li>
+                <li>跨系统、跨团队的数据打通与协同</li>
+                <li>像对话一样搭建管理应用</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="cta-block">
+          <h2 class="cta-headline">和你的第一位星辰数字员工打个招呼。</h2>
+          <p class="cta-text">几个小问题，为你推荐合适的产品与数字员工。</p>
+          <div class="cta-links">
+            <a href="stars_ai_preview.html">返回体验首页</a>
+            <a href="stars_ai_preview.html">直接开始引导 →</a>
+          </div>
+        </section>
+      </main>
+
+      <footer>© 2026 星辰 AI · 来自金蝶</footer>
+    </div>
+  </body>
+</html>

@@ -41,15 +41,104 @@
         { icon: "📊", name: "经营分析 Agent", desc: "多维利润分析、经营日报自动生成、关键指标异动即时通知", color: "#38bdf8" },
       ];
 
+      const AGENT_FAMILIES = [
+        {
+          key: "finance",
+          icon: "💰",
+          title: "财务 Agents",
+          subtitle: "数字出纳 · 会计 · 财务经理",
+          color: "#c084fc",
+          stat: "覆盖 90% 记账与对账工作",
+          members: [
+            { name: "记账 Agent", desc: "凭证自动生成、分录匹配" },
+            { name: "对账 Agent", desc: "总账/明细/银行流水核对" },
+            { name: "结账 Agent", desc: "月末结转、自动结账检查" },
+            { name: "现金流 Agent", desc: "收支预测、资金缺口预警" },
+          ],
+        },
+        {
+          key: "supply",
+          icon: "📦",
+          title: "供应链 Agents",
+          subtitle: "数字采购员 · 仓管 · 配送专员",
+          color: "#38bdf8",
+          stat: "帮助稳定库存与交付节奏",
+          members: [
+            { name: "采购 Agent", desc: "补货建议、供应商比价" },
+            { name: "库存 Agent", desc: "安全库存线、呆滞提醒" },
+            { name: "开单 Agent", desc: "进销存开单、折扣规则" },
+            { name: "交付 Agent", desc: "出入库排程、到货跟踪" },
+          ],
+        },
+        {
+          key: "tax",
+          icon: "🧾",
+          title: "票税 Agents",
+          subtitle: "数字税务专员 · 发票管理员",
+          color: "#00e4a0",
+          stat: "发票归集与申报一体化",
+          members: [
+            { name: "开票 Agent", desc: "销项开票、合规校验" },
+            { name: "进项归集 Agent", desc: "进项票自动归类" },
+            { name: "申报 Agent", desc: "申报预填、表间校验" },
+            { name: "稽核 Agent", desc: "异常票与税负分析" },
+          ],
+        },
+        {
+          key: "insight",
+          icon: "📊",
+          title: "分析 Agents",
+          subtitle: "数字经营分析师 · 风控员",
+          color: "#38bdf8",
+          stat: "每天一份经营决策快报",
+          members: [
+            { name: "利润分析 Agent", desc: "多维毛利、盈利来源" },
+            { name: "经营日报 Agent", desc: "关键指标日报" },
+            { name: "预警 Agent", desc: "库存/资金/毛利异动" },
+            { name: "预测 Agent", desc: "销售与资金走势" },
+          ],
+        },
+      ];
+
+      const EMPLOYEES = [
+        {
+          key: "finance",
+          title: "财务数字员工",
+          subtitle: "盯紧每一笔收支。",
+        },
+        {
+          key: "purchase",
+          title: "采购 / 库存数字员工",
+          subtitle: "把货备足，又不压太多钱。",
+        },
+        {
+          key: "tax",
+          title: "税务数字员工",
+          subtitle: "报税这件事，交给它就好。",
+        },
+        {
+          key: "insight",
+          title: "经营分析数字员工",
+          subtitle: "把复杂报表，变成几句话的结论。",
+        },
+      ];
+
+      const EMPLOYEE_MEDIA = [
+        "assets/stars-ai-employees-finance.png",
+        "assets/stars-ai-employees-purchase.png",
+        "assets/stars-ai-employees-tax.png",
+        "assets/stars-ai-employees-insight.png",
+      ];
+
       const INDUSTRIES = [
-        { icon: "🍜", name: "食品饮料", desc: "保质期管理 · 批次追溯 · 渠道分销", bg: "linear-gradient(135deg, #ff9a56 0%, #ff6b6b 100%)" },
-        { icon: "📱", name: "家电数码", desc: "串号管理 · 售后追踪 · 渠道库存", bg: "linear-gradient(135deg, #63b6ff 0%, #5b7fff 100%)" },
-        { icon: "🔌", name: "电子元器件", desc: "料号管理 · 替代料匹配 · MOQ优化", bg: "linear-gradient(135deg, #00e4a0 0%, #00b4d8 100%)" },
-        { icon: "🔩", name: "五金配件", desc: "多规格SKU · 称重计价 · 来料加工", bg: "linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)" },
-        { icon: "🏠", name: "家装建材", desc: "项目制管理 · 工程报价 · 安装派单", bg: "linear-gradient(135deg, #a78bfa 0%, #818cf8 100%)" },
-        { icon: "⚙️", name: "机械设备", desc: "BOM深度管理 · 工序成本 · 售后合同", bg: "linear-gradient(135deg, #6ee7b7 0%, #34d399 100%)" },
-        { icon: "💼", name: "商业服务", desc: "项目工时 · 服务合同 · 收款进度", bg: "linear-gradient(135deg, #f0abfc 0%, #c084fc 100%)" },
-        { icon: "🛒", name: "电子商务", desc: "多平台订单 · 仓储物流 · 退换货", bg: "linear-gradient(135deg, #fb923c 0%, #f43f5e 100%)" },
+        { label: "食品", name: "食品饮料", desc: "保质期管理 · 批次追溯 · 渠道分销", bg: "linear-gradient(135deg, #ff9a56 0%, #ff6b6b 100%)", image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=600&auto=format&fit=crop&q=80" },
+        { label: "家电", name: "家电数码", desc: "串号管理 · 售后追踪 · 渠道库存", bg: "linear-gradient(135deg, #63b6ff 0%, #5b7fff 100%)", image: "https://images.unsplash.com/photo-1498049794561-7780e7231661?w=600&auto=format&fit=crop&q=80" },
+        { label: "电子", name: "电子元器件", desc: "料号管理 · 替代料匹配 · MOQ优化", bg: "linear-gradient(135deg, #00e4a0 0%, #00b4d8 100%)", image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&auto=format&fit=crop&q=80" },
+        { label: "五金", name: "五金配件", desc: "多规格SKU · 称重计价 · 来料加工", bg: "linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)", image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&auto=format&fit=crop&q=80" },
+        { label: "家装", name: "家装建材", desc: "项目制管理 · 工程报价 · 安装派单", bg: "linear-gradient(135deg, #a78bfa 0%, #818cf8 100%)", image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&auto=format&fit=crop&q=80" },
+        { label: "机械", name: "机械设备", desc: "BOM深度管理 · 工序成本 · 售后合同", bg: "linear-gradient(135deg, #6ee7b7 0%, #34d399 100%)", image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&auto=format&fit=crop&q=80" },
+        { label: "商业", name: "商业服务", desc: "项目工时 · 服务合同 · 收款进度", bg: "linear-gradient(135deg, #f0abfc 0%, #c084fc 100%)", image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop&q=80" },
+        { label: "电商", name: "电子商务", desc: "多平台订单 · 仓储物流 · 退换货", bg: "linear-gradient(135deg, #fb923c 0%, #f43f5e 100%)", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&auto=format&fit=crop&q=80" },
       ];
 
       const PRODUCTS = [
@@ -251,8 +340,8 @@
         return (
           <div style={{ textAlign: "center", marginBottom: 48 }}>
             {tag && <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: 3, color: "#63b6ff", textTransform: "uppercase", marginBottom: 12 }}>{tag}</div>}
-            <h2 style={{ fontSize: 36, fontWeight: 800, margin: 0, background: "linear-gradient(135deg, #0f172a 0%, #2563eb 50%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", lineHeight: 1.3 }}>{title}</h2>
-            {subtitle && <p style={{ fontSize: 16, color: "rgba(15,23,42,0.7)", marginTop: 12, maxWidth: 560, marginLeft: "auto", marginRight: "auto", lineHeight: 1.7 }}>{subtitle}</p>}
+            <h2 style={{ fontSize: 36, fontWeight: 800, margin: 0, background: "linear-gradient(135deg, #0f172a 0%, #2563eb 50%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", lineHeight: 1.3, maxWidth: "100%", overflowWrap: "break-word", wordBreak: "break-word" }}>{title}</h2>
+            {subtitle && <p style={{ fontSize: 16, color: "rgba(15,23,42,0.7)", marginTop: 12, maxWidth: 560, marginLeft: "auto", marginRight: "auto", lineHeight: 1.7, overflowWrap: "break-word", wordBreak: "break-word" }}>{subtitle}</p>}
           </div>
         );
       }
@@ -262,8 +351,11 @@
           <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 200, padding: "0 32px", height: 60, display: "flex", alignItems: "center", borderBottom: "1px solid rgba(41,113,235,0.08)", background: "rgba(255,255,255,0.9)", backdropFilter: "blur(24px)" }}>
             <div style={{ width: "100%", maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <span style={{ fontSize: 22, filter: "drop-shadow(0 0 6px rgba(41,113,235,0.5))" }}>✦</span>
-                <span style={{ fontWeight: 800, fontSize: 18, letterSpacing: -0.5, color: "rgb(41,113,235)" }}>星辰 AI</span>
+                <img
+                  src="./assets/kingdee-ai-logo.png"
+                  alt="Kingdee AI"
+                  style={{ height: 30, display: "block", filter: "drop-shadow(0 0 6px rgba(41,113,235,0.45))" }}
+                />
               </div>
               <div style={{ display: "flex", gap: 28, fontSize: 14, color: "rgba(17,24,39,0.65)" }}>
                 {["产品", "解决方案", "社区", "应用市场"].map((l) => <span key={l} style={{ cursor: "pointer" }}>{l}</span>)}
@@ -305,16 +397,20 @@
         const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
         const [activeModule, setActiveModule] = useState(null);
         const [dashboardTab, setDashboardTab] = useState("任务");
+        const [dashboardSection, setDashboardSection] = useState("home"); // "home" | "billing"
         const [trialBannerDismissed, setTrialBannerDismissed] = useState(false);
         const [showUpgradeModal, setShowUpgradeModal] = useState(false);
         const [showAuthModal, setShowAuthModal] = useState(false);
-        const [authTab, setAuthTab] = useState("login");
+        const [authTab, setAuthTab] = useState("register");
         const [showExpandMenu, setShowExpandMenu] = useState(false);
         const [followUpIndex, setFollowUpIndex] = useState(0);
         const [billingCycle, setBillingCycle] = useState("annual");
         const [hoveredAgent, setHoveredAgent] = useState(null);
         const [hoveredIndustry, setHoveredIndustry] = useState(null);
+        const [showSettingsPanel, setShowSettingsPanel] = useState(false);
         const [onboardingInput, setOnboardingInput] = useState("");
+        const [activeAgentFamily, setActiveAgentFamily] = useState(0);
+        const [activeEmployee, setActiveEmployee] = useState(0);
         const chatEnd = useRef(null);
 
         useEffect(() => { chatEnd.current?.scrollIntoView({ behavior: "smooth" }); }, [messages, typing]);
@@ -330,8 +426,8 @@
             setTimeout(() => { setTyping(false); setMessages((p) => [...p, { role: "ai", text: ONBOARDING_STEPS[0].question }]); }, 800);
           }, 400);
         }, []);
-        const openAuthModal = useCallback(() => setShowAuthModal(true), []);
         const doStartOnboarding = useCallback((chipText) => { setShowAuthModal(false); startOnboarding(chipText); }, [startOnboarding]);
+        const openAuthModal = useCallback(() => setShowAuthModal(true), []);
 
         const startDiscover = useCallback(() => {
           setPhase("discover");
@@ -426,6 +522,9 @@
         // ═══════════════════════════════════════════════════════
         //  UPGRADE（三档版本，类似 Manus）
         // ═══════════════════════════════════════════════════════
+        const flagshipProduct = PRODUCTS.find((p) => p.highlighted);
+        const otherProducts = PRODUCTS.filter((p) => !p.highlighted);
+
         if (phase === "upgrade") {
           return (
             <>
@@ -496,6 +595,35 @@
                       )}
                       <button onClick={() => doStartOnboarding()} style={{ width: "100%", padding: "14px 20px", borderRadius: 12, border: "none", fontSize: 14, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", background: "rgb(41,113,235)", color: "#fff" }}>{authTab === "login" ? "登录并开始" : "注册并开始"}</button>
                       <button onClick={() => setShowAuthModal(false)} style={{ marginTop: 12, width: "100%", padding: "10px", border: "none", background: "none", fontSize: 13, color: "#9ca3af", cursor: "pointer", fontFamily: "inherit" }}>取消</button>
+                      <div style={{ fontSize: 12, color: "#9ca3af", textAlign: "center", marginTop: 16, marginBottom: 10 }}>或使用全球账号快速开始</div>
+                      <div style={{ display: "flex", justifyContent: "center", gap: 10 }}>
+                        {[
+                          { key: "google", label: "G", bg: "#ffffff", border: "#e5e7eb" },
+                          { key: "apple", label: "", bg: "#111827", border: "#111827", color: "#ffffff" },
+                          { key: "microsoft", label: "MS", bg: "#ffffff", border: "#e5e7eb" },
+                        ].map((p) => (
+                          <button
+                            key={p.key}
+                            type="button"
+                            style={{
+                              width: 36,
+                              height: 36,
+                              borderRadius: "999px",
+                              border: `1px solid ${p.border}`,
+                              background: p.bg,
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              fontSize: p.key === "apple" ? 18 : 13,
+                              fontWeight: 600,
+                              color: p.color || "#111827",
+                              cursor: "pointer",
+                            }}
+                          >
+                            {p.label}
+                          </button>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -536,14 +664,16 @@
                       WebkitBackgroundClip: "text",
                       WebkitTextFillColor: "transparent",
                       margin: "0 0 16px",
+                      overflowWrap: "break-word",
+                      wordBreak: "break-word",
                     }}
                   >
                     你好，欢迎你
                   </h1>
                 </Reveal>
                 <Reveal delay={0.2}>
-                  <p style={{ fontSize: 18, color: "rgba(17,24,39,0.6)", textAlign: "center", maxWidth: 480, margin: "0 auto 36px", lineHeight: 1.7 }}>
-                    回答 5 个问题，2 分钟获得你的 AI 商业管理伙伴
+                  <p style={{ fontSize: 18, color: "rgba(17,24,39,0.6)", textAlign: "center", maxWidth: 480, margin: "0 auto 36px", lineHeight: 1.7, overflowWrap: "break-word", wordBreak: "break-word" }}>
+                    专属于你的AI星辰
                   </p>
                 </Reveal>
                 <Reveal delay={0.3}>
@@ -584,11 +714,19 @@
                 </Reveal>
                 <Reveal delay={0.4}>
                   <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "center", marginTop: 20 }}>
-{["了解星辰AI", "选择适合我的产品", "免费试用", "联系售前", "更多"].map((c) => (
-                    <span
-                      key={c}
-                      onClick={() => (c === "了解星辰AI" ? startDiscover() : c === "免费试用" ? openAuthModal() : openAuthModal(c))}
-                      style={{
+                    {["了解星辰AI", "选择适合我的产品", "免费试用", "联系售前", "更多"].map((c) => (
+                      <span
+                        key={c}
+                        onClick={() => {
+                          if (c === "了解星辰AI") {
+                            window.open("stars_ai_intro.html", "_blank");
+                          } else if (c === "免费试用") {
+                            openAuthModal();
+                          } else {
+                            openAuthModal(c);
+                          }
+                        }}
+                        style={{
                           padding: "9px 20px",
                           borderRadius: 24,
                           fontSize: 13,
@@ -611,37 +749,168 @@
                 </div>
               </section>
 
-              {/* ───── S2: AI Agent 能力 ───── */}
-              <section style={{ padding: "100px 20px", maxWidth: 1200, margin: "0 auto" }}>
-                <Reveal><SectionTitle tag="AI Agent 矩阵" title="六大智能 Agent，覆盖经营全链路" subtitle="每个 Agent 都是一位不知疲倦的业务专家，7×24 小时为你工作" /></Reveal>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
-                  {AGENTS.map((a, i) => (
-                    <Reveal key={a.name} delay={i * 0.08}>
-                      <div onMouseEnter={() => setHoveredAgent(i)} onMouseLeave={() => setHoveredAgent(null)} style={{ position: "relative", background: hoveredAgent === i ? "#eef2ff" : "#f9fafb", border: `1px solid ${hoveredAgent === i ? a.color + "40" : "#e5e7eb"}`, borderRadius: 20, padding: "32px 28px", cursor: "pointer", transition: "all 0.35s", transform: hoveredAgent === i ? "translateY(-4px)" : "none", overflow: "hidden" }}>
-                        <div style={{ position: "absolute", top: -40, right: -40, width: 120, height: 120, borderRadius: "50%", background: `radial-gradient(circle, ${a.color}10, transparent 70%)`, transition: "opacity 0.4s", opacity: hoveredAgent === i ? 1 : 0 }} />
-                        <div style={{ fontSize: 36, marginBottom: 16 }}>{a.icon}</div>
-                        <div style={{ fontSize: 18, fontWeight: 700, color: "#0f172a", marginBottom: 8 }}>{a.name}</div>
-                        <div style={{ fontSize: 13, color: "rgba(15,23,42,0.7)", lineHeight: 1.7 }}>{a.desc}</div>
-                        <div style={{ marginTop: 20, display: "flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 600, color: a.color, opacity: hoveredAgent === i ? 1 : 0, transition: "opacity 0.3s" }}>了解详情 <span style={{ fontSize: 16 }}>→</span></div>
+              {/* ───── S2: 星辰 AI · 你的数字员工 ───── */}
+              <section style={{ padding: "120px 0 80px", background: "#ffffff" }}>
+                <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 20px" }}>
+                  <Reveal>
+                    <SectionTitle
+                      tag="数字员工"
+                      title="星辰 AI · 你的数字员工"
+                      subtitle="7×24小时的数字员工，为您完成日常工作，让您把时间花在真正重要的事情上"
+                    />
+                  </Reveal>
+
+                  <Reveal delay={0.1}>
+                    <div
+                      style={{
+                        marginTop: 40,
+                        display: "grid",
+                        gridTemplateColumns: "minmax(0, 1.7fr) minmax(0, 1fr)", // 约 63:37，偏 6:4
+                        gap: 32,
+                        alignItems: "stretch",
+                      }}
+                    >
+                      {/* 左侧 GIF 动画展示区（蓝色背景，随右侧卡片切换文案） */}
+                      <div
+                        style={{
+                          borderRadius: 24,
+                          padding: "32px 32px 28px",
+                          background: "#f3f6ff",
+                          border: "1px solid rgba(41,113,235,0.12)",
+                          boxShadow:
+                            activeEmployee != null
+                              ? "0 16px 40px rgba(15,23,42,0.12)"
+                              : "0 8px 20px rgba(15,23,42,0.06)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          transition: "box-shadow 0.25s ease, transform 0.25s ease",
+                          transform: activeEmployee != null ? "translateY(-2px)" : "none",
+                        }}
+                      >
+                        <div
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            maxHeight: 360,
+                            borderRadius: 18,
+                            background:
+                              "radial-gradient(circle at 0% 0%, rgba(59,130,246,0.06), transparent 55%), linear-gradient(135deg, #ffffff 0%, #eff6ff 100%)",
+                            display: "flex",
+                            flexDirection: "column",
+                            justifyContent: "center",
+                            alignItems: "flex-start",
+                            padding: "28px 32px",
+                            color: "#0f172a",
+                            boxSizing: "border-box",
+                            transform: activeEmployee != null ? "scale(1.02)" : "scale(1)",
+                            transition: "transform 0.25s ease",
+                            overflow: "hidden",
+                          }}
+                        >
+                          <img
+                            src={EMPLOYEE_MEDIA[activeEmployee] || EMPLOYEE_MEDIA[0]}
+                            alt={(EMPLOYEES[activeEmployee] || EMPLOYEES[0]).title}
+                            style={{
+                              width: "100%",
+                              maxHeight: 200,
+                              objectFit: "cover",
+                              borderRadius: 12,
+                              marginBottom: 20,
+                            }}
+                          />
+                          <div style={{ fontSize: 20, fontWeight: 700, marginBottom: 10, color: "rgb(37,99,235)" }}>
+                            {(EMPLOYEES[activeEmployee] || EMPLOYEES[0]).title}
+                          </div>
+                          <div style={{ fontSize: 15, opacity: 0.9, maxWidth: 360, lineHeight: 1.7 }}>
+                            {(EMPLOYEES[activeEmployee] || EMPLOYEES[0]).subtitle}
+                          </div>
+                        </div>
                       </div>
-                    </Reveal>
-                  ))}
+
+                      {/* 右侧 4 个数字员工模块垂直列表 */}
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          gap: 24,
+                        }}
+                      >
+                        {EMPLOYEES.map((m, index) => (
+                          <div
+                            key={m.key}
+                            role="button"
+                            tabIndex={0}
+                            onMouseEnter={() => setActiveEmployee(index)}
+                            onClick={() => setActiveEmployee(index)}
+                            style={{
+                              padding: "12px 0",
+                              cursor: "pointer",
+                              transition: "opacity 0.2s ease, transform 0.18s ease, color 0.18s ease",
+                              opacity: activeEmployee === index ? 1 : 0.78,
+                              transform: activeEmployee === index ? "translateX(4px)" : "none",
+                            }}
+                          >
+                            <div
+                              style={{
+                                fontSize: 16,
+                                fontWeight: 700,
+                                color: activeEmployee === index ? "rgb(37,99,235)" : "#0f172a",
+                                marginBottom: 4,
+                              }}
+                            >
+                              {m.title}
+                            </div>
+                            <div
+                              style={{
+                                fontSize: 14,
+                                color: activeEmployee === index ? "rgba(55,65,81,0.9)" : "rgba(55,65,81,0.75)",
+                                lineHeight: 1.5,
+                              }}
+                            >
+                              {m.subtitle}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </Reveal>
                 </div>
               </section>
 
-              {/* ───── S3: 行业解决方案 ───── */}
-              <section style={{ padding: "100px 20px", position: "relative" }}>
-                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, transparent, rgba(99,182,255,0.02) 30%, rgba(99,182,255,0.02) 70%, transparent)", pointerEvents: "none" }} />
+              {/* ───── S3: 行业解决方案（模板卡片式） ───── */}
+              <section style={{ padding: "80px 20px 100px", background: "#f8fafc" }}>
                 <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative" }}>
-                  <Reveal><SectionTitle tag="行业解决方案" title="深耕 8 大行业，开箱即用" subtitle="每个行业方案预置专属业务模板、字段与工作流，无需从零配置" /></Reveal>
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
+                  <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: 16, marginBottom: 32 }}>
+                    <div>
+                      <h2 style={{ fontSize: 28, fontWeight: 800, color: "#0f172a", margin: "0 0 8px" }}>行业解决方案</h2>
+                      <p style={{ fontSize: 15, color: "rgba(15,23,42,0.6)", margin: 0 }}>从行业模板快速开始，预置业务字段与工作流</p>
+                    </div>
+                    <span style={{ display: "inline-block", padding: "10px 20px", borderRadius: 10, background: "#fff", border: "1px solid rgba(0,0,0,0.08)", fontSize: 14, fontWeight: 600, color: "#374151", cursor: "pointer", boxShadow: "0 1px 2px rgba(0,0,0,0.04)" }}>查看全部</span>
+                  </div>
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20 }}>
                     {INDUSTRIES.map((ind, i) => (
-                      <Reveal key={ind.name} delay={i * 0.06}>
-                        <div onMouseEnter={() => setHoveredIndustry(i)} onMouseLeave={() => setHoveredIndustry(null)} style={{ position: "relative", borderRadius: 20, padding: "36px 24px 28px", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)", cursor: "pointer", transition: "all 0.35s", transform: hoveredIndustry === i ? "translateY(-6px)" : "none", overflow: "hidden" }}>
-                          <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: ind.bg, opacity: hoveredIndustry === i ? 1 : 0.3, transition: "opacity 0.3s" }} />
-                        <div style={{ fontSize: 40, marginBottom: 16 }}>{ind.icon}</div>
-                        <div style={{ fontSize: 17, fontWeight: 700, color: "#0f172a", marginBottom: 8 }}>{ind.name}</div>
-                        <div style={{ fontSize: 12, color: "rgba(15,23,42,0.65)", lineHeight: 1.7, letterSpacing: 0.3 }}>{ind.desc}</div>
+                      <Reveal key={ind.name} delay={i * 0.05}>
+                        <div
+                          onMouseEnter={() => setHoveredIndustry(i)}
+                          onMouseLeave={() => setHoveredIndustry(null)}
+                          style={{
+                            borderRadius: 16,
+                            overflow: "hidden",
+                            background: "#fff",
+                            boxShadow: hoveredIndustry === i ? "0 20px 40px rgba(0,0,0,0.12)" : "0 4px 12px rgba(0,0,0,0.06)",
+                            cursor: "pointer",
+                            transition: "all 0.3s ease",
+                            transform: hoveredIndustry === i ? "translateY(-4px)" : "none",
+                          }}
+                        >
+                          <div style={{ aspectRatio: "4 / 3", overflow: "hidden", background: "#e2e8f0" }}>
+                            <img src={ind.image} alt={ind.name} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                          </div>
+                          <div style={{ padding: "20px 18px 22px" }}>
+                            <div style={{ fontSize: 17, fontWeight: 700, color: "#0f172a", marginBottom: 6 }}>{ind.name}</div>
+                            <div style={{ fontSize: 13, color: "rgba(15,23,42,0.6)", lineHeight: 1.6 }}>{ind.desc}</div>
+                          </div>
                         </div>
                       </Reveal>
                     ))}
@@ -649,28 +918,189 @@
                 </div>
               </section>
 
-              {/* ───── S4: 产品选择 ───── */}
+              {/* ───── S4: 产品选择（旗舰 + 双卡布局） ───── */}
               <section style={{ padding: "100px 20px", maxWidth: 1200, margin: "0 auto" }}>
-                <Reveal><SectionTitle tag="产品矩阵" title="总有一款适合你的企业" subtitle="从个体户到成长型企业，星辰产品家族为每个阶段量身打造" /></Reveal>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24, alignItems: "stretch" }}>
-                  {PRODUCTS.map((p, i) => (
-                    <Reveal key={p.name} delay={i * 0.1}>
-                      <div style={{ position: "relative", borderRadius: 24, padding: "36px 32px 32px", background: p.highlighted ? "rgba(255,255,255,0.04)" : "rgba(255,255,255,0.02)", border: `1px solid ${p.highlighted ? p.color + "30" : "rgba(255,255,255,0.06)"}`, display: "flex", flexDirection: "column", overflow: "hidden", height: "100%" }}>
-                        <div style={{ position: "absolute", top: 20, right: 20, fontSize: 11, fontWeight: 700, padding: "4px 14px", borderRadius: 20, background: p.color + "18", color: p.color, letterSpacing: 0.5 }}>{p.badge}</div>
-                        {p.highlighted && <div style={{ position: "absolute", top: -60, right: -60, width: 200, height: 200, borderRadius: "50%", background: `radial-gradient(circle, ${p.color}12, transparent 70%)`, pointerEvents: "none" }} />}
-                        <div style={{ fontSize: 12, color: "rgba(55,65,81,0.9)", fontWeight: 600, marginBottom: 8 }}>{p.target}</div>
-                        <div style={{ fontSize: 28, fontWeight: 800, color: "#0f172a", marginBottom: 6 }}>{p.name}</div>
-                        <div style={{ fontSize: 13, color: "rgba(31,41,55,0.85)", lineHeight: 1.7, marginBottom: 20, flex: 1 }}>{p.desc}</div>
-                        <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 24 }}>
-                          {p.features.map((f) => (
-                            <div key={f} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 13, color: "rgba(31,41,55,0.9)" }}>
-                              <span style={{ width: 18, height: 18, borderRadius: "50%", background: p.color + "18", color: p.color, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 700, flexShrink: 0 }}>✓</span>{f}
+                <Reveal>
+                  <SectionTitle
+                    tag="产品矩阵"
+                    title="金蝶产品家族"
+                    subtitle="只为您打造的专属产品"
+                  />
+                </Reveal>
+                {flagshipProduct && (
+                  <Reveal>
+                    <div
+                      style={{
+                        position: "relative",
+                        borderRadius: 32,
+                        padding: "40px 40px 34px",
+                        marginBottom: 32,
+                        background:
+                          "radial-gradient(circle at 10% 0%, rgba(99,182,255,0.16), transparent 55%), radial-gradient(circle at 90% 120%, rgba(192,132,252,0.18), transparent 65%), #f9fafb",
+                        border: "1px solid rgba(148,163,184,0.4)",
+                        overflow: "hidden",
+                        display: "grid",
+                        gridTemplateColumns: "minmax(0, 1.2fr) minmax(0, 1fr)",
+                        gap: 32,
+                        alignItems: "center",
+                      }}
+                    >
+                      <div style={{ position: "absolute", inset: 0, opacity: 0.3, backgroundImage: "radial-gradient(circle at 0 0, rgba(255,255,255,0.8), transparent 60%)" }} />
+                      <div style={{ position: "relative" }}>
+                        <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "4px 14px", borderRadius: 999, border: "1px solid rgba(148,163,184,0.6)", background: "rgba(255,255,255,0.9)", backdropFilter: "blur(16px)", marginBottom: 16 }}>
+                          <span style={{ fontSize: 11, fontWeight: 700, color: "rgba(31,41,55,0.85)", letterSpacing: 0.5 }}>旗舰产品 · 金蝶 AI 星辰</span>
+                        </div>
+                        <div style={{ fontSize: 30, fontWeight: 800, color: "#0f172a", letterSpacing: -0.5, marginBottom: 10 }}>
+                          {flagshipProduct.name}
+                        </div>
+                        <div style={{ fontSize: 13, color: "rgba(31,41,55,0.85)", marginBottom: 20, lineHeight: 1.8, maxWidth: 520 }}>
+                          {flagshipProduct.desc}
+                        </div>
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 24 }}>
+                          {flagshipProduct.features.map((f) => (
+                            <div
+                              key={f}
+                              style={{
+                                display: "inline-flex",
+                                alignItems: "center",
+                                gap: 8,
+                                padding: "8px 14px",
+                                borderRadius: 999,
+                                background: "#ffffff",
+                                border: "1px solid rgba(209,213,219,0.9)",
+                                fontSize: 12,
+                                color: "rgba(31,41,55,0.9)",
+                              }}
+                            >
+                              <span style={{ width: 16, height: 16, borderRadius: "50%", background: flagshipProduct.color + "18", color: flagshipProduct.color, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 700 }}>✓</span>
+                              {f}
                             </div>
                           ))}
                         </div>
-                        <div style={{ fontSize: 22, fontWeight: 800, color: p.color, marginBottom: 20 }}>{p.price}</div>
-                        <div onClick={() => openAuthModal()} style={{ textAlign: "center", padding: "12px 0", borderRadius: 14, fontWeight: 700, fontSize: 14, cursor: "pointer", transition: "all 0.25s", background: p.highlighted ? `linear-gradient(135deg, ${p.color}, ${p.color}cc)` : "#f3f4f6", color: p.highlighted ? "#060a12" : "#111827", border: `1px solid ${p.highlighted ? "transparent" : "#e5e7eb"}` }}>
-                          {p.highlighted ? "立即体验" : "了解更多"}
+                        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+                          <div style={{ fontSize: 24, fontWeight: 800, color: flagshipProduct.color }}>{flagshipProduct.price}</div>
+                          <button
+                            onClick={() => openAuthModal()}
+                            style={{
+                              padding: "10px 22px",
+                              borderRadius: 999,
+                              border: "none",
+                              background: `linear-gradient(135deg, ${flagshipProduct.color}, ${flagshipProduct.color}dd)`,
+                              color: "#ffffff",
+                              fontSize: 14,
+                              fontWeight: 700,
+                              cursor: "pointer",
+                              fontFamily: "inherit",
+                              boxShadow: "0 14px 32px rgba(37,99,235,0.35)",
+                            }}
+                          >
+                            立即体验 金蝶 AI 星辰
+                          </button>
+                        </div>
+                      </div>
+                      <div style={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                        <div
+                          style={{
+                            position: "relative",
+                            width: "100%",
+                            maxWidth: 360,
+                            aspectRatio: "4 / 3",
+                            borderRadius: 32,
+                            background: "radial-gradient(circle at 20% 0%, rgba(255,255,255,0.95), rgba(209,213,219,0.35))",
+                            boxShadow: "0 30px 120px rgba(15,23,42,0.18)",
+                            overflow: "hidden",
+                            transform: "rotate(-6deg)",
+                          }}
+                        >
+                          <div style={{ position: "absolute", inset: 16, borderRadius: 26, background: "linear-gradient(135deg, #0f172a, #020617)", border: "1px solid rgba(148,163,184,0.35)", overflow: "hidden" }}>
+                            <div style={{ padding: "12px 16px", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid rgba(31,41,55,0.9)", background: "radial-gradient(circle at 0 0, rgba(148,163,184,0.3), transparent 55%)" }}>
+                              <span style={{ fontSize: 11, color: "rgba(148,163,184,0.95)" }}>金蝶 AI 星辰 · 经营驾驶舱</span>
+                              <span style={{ width: 8, height: 8, borderRadius: "50%", background: "radial-gradient(circle at center, #22c55e, transparent)", boxShadow: "0 0 8px #22c55e" }} />
+                            </div>
+                            <div style={{ padding: "16px 16px 12px", display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 10, alignItems: "center" }}>
+                              <div>
+                                <div style={{ fontSize: 20, fontWeight: 800, color: "#e5e7eb", marginBottom: 4 }}>本月经营总览</div>
+                                <div style={{ fontSize: 11, color: "rgba(148,163,184,0.95)", marginBottom: 12 }}>库存 · 成本 · 现金流 一屏掌握</div>
+                                <div style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 11, color: "rgba(209,213,219,0.9)" }}>
+                                  <div style={{ display: "flex", justifyContent: "space-between" }}><span>库存准确率</span><span>98.3%</span></div>
+                                  <div style={{ display: "flex", justifyContent: "space-between" }}><span>单据自动化</span><span>82%</span></div>
+                                  <div style={{ display: "flex", justifyContent: "space-between" }}><span>毛利提升</span><span>+6.4%</span></div>
+                                </div>
+                              </div>
+                              <div style={{ position: "relative", alignSelf: "stretch", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                                <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 0, rgba(59,130,246,0.6), transparent 70%)", opacity: 0.55 }} />
+                                <div
+                                  style={{
+                                    position: "relative",
+                                    width: 110,
+                                    height: 110,
+                                    borderRadius: "50%",
+                                    border: "8px solid rgba(15,23,42,0.9)",
+                                    boxShadow: "0 16px 35px rgba(15,23,42,0.9)",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    background: "conic-gradient(from 220deg, #22c55e 0 60%, rgba(30,64,175,0.6) 60% 100%)",
+                                  }}
+                                >
+                                  <div style={{ width: 70, height: 70, borderRadius: "50%", background: "#020617", display: "flex", alignItems: "center", justifyContent: "center", color: "#e5e7eb", fontSize: 26 }}>✦</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Reveal>
+                )}
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 24, alignItems: "stretch" }}>
+                  {otherProducts.map((p, i) => (
+                    <Reveal key={p.name} delay={i * 0.08}>
+                      <div
+                        style={{
+                          position: "relative",
+                          borderRadius: 24,
+                          padding: "32px 30px 30px",
+                          background: "#ffffff",
+                          border: "1px solid rgba(229,231,235,1)",
+                          display: "flex",
+                          flexDirection: "column",
+                          overflow: "hidden",
+                          height: "100%",
+                          boxShadow: "0 12px 28px rgba(15,23,42,0.06)",
+                        }}
+                      >
+                        <div style={{ position: "absolute", top: 18, right: 20, fontSize: 11, fontWeight: 700, padding: "4px 14px", borderRadius: 20, background: p.color + "18", color: p.color }}>{p.badge}</div>
+                        <div style={{ fontSize: 12, color: "rgba(107,114,128,0.9)", fontWeight: 600, marginBottom: 8 }}>{p.target}</div>
+                        <div style={{ fontSize: 24, fontWeight: 800, color: "#0f172a", marginBottom: 6 }}>{p.name}</div>
+                        <div style={{ fontSize: 13, color: "rgba(55,65,81,0.95)", lineHeight: 1.7, marginBottom: 18, flex: 1 }}>{p.desc}</div>
+                        <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 20 }}>
+                          {p.features.map((f) => (
+                            <div key={f} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 13, color: "rgba(55,65,81,0.9)" }}>
+                              <span style={{ width: 18, height: 18, borderRadius: "50%", background: p.color + "18", color: p.color, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 700, flexShrink: 0 }}>✓</span>
+                              {f}
+                            </div>
+                          ))}
+                        </div>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "auto" }}>
+                          <div style={{ fontSize: 20, fontWeight: 800, color: p.color }}>{p.price}</div>
+                          <div
+                            onClick={() => openAuthModal()}
+                            style={{
+                              textAlign: "center",
+                              padding: "10px 18px",
+                              borderRadius: 999,
+                              fontWeight: 700,
+                              fontSize: 13,
+                              cursor: "pointer",
+                              transition: "all 0.25s",
+                              background: "#0f172a",
+                              color: "#ffffff",
+                              border: "1px solid #0f172a",
+                            }}
+                          >
+                            了解更多
+                          </div>
                         </div>
                       </div>
                     </Reveal>
@@ -722,6 +1152,86 @@
                       </div>
                     </Reveal>
                   ))}
+                </div>
+              </section>
+
+              {/* ───── S7: 底部引导至 Onboarding ───── */}
+              <section style={{ padding: "0 20px 96px", background: "#ffffff" }}>
+                <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+                  <Reveal delay={0.1}>
+                    <div style={{ display: "flex", justifyContent: "center" }}>
+                      <div
+                        onClick={() => doStartOnboarding()}
+                        style={{
+                          maxWidth: 720,
+                          width: "100%",
+                          padding: "28px 28px 24px",
+                          borderRadius: 26,
+                          border: "1px solid #e5e7eb",
+                          background: "#ffffff",
+                          boxShadow: "0 18px 40px rgba(15,23,42,0.06)",
+                          cursor: "pointer",
+                        }}
+                      >
+                        <div style={{ fontSize: 20, fontWeight: 700, color: "#111827", textAlign: "center", marginBottom: 18 }}>
+                          准备好了吗？构建专属于你的 AI 星辰
+                        </div>
+                        <div
+                          style={{
+                            marginTop: 4,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "space-between",
+                            padding: "12px 16px",
+                            borderRadius: 999,
+                            background: "#f9fafb",
+                            border: "1px solid #e5e7eb",
+                            gap: 12,
+                          }}
+                        >
+                          <div style={{ display: "flex", alignItems: "center", gap: 10, flex: 1, minWidth: 0 }}>
+                            <div
+                              style={{
+                                width: 28,
+                                height: 28,
+                                borderRadius: "999px",
+                                border: "1px solid #e5e7eb",
+                                background: "#ffffff",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                fontSize: 18,
+                                color: "#6b7280",
+                              }}
+                            >
+                              +
+                            </div>
+                            <span style={{ fontSize: 14, color: "rgba(17,24,39,0.6)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                              查看今天的销售情况
+                            </span>
+                          </div>
+                          <div
+                            style={{
+                              width: 32,
+                              height: 32,
+                              borderRadius: "50%",
+                              background: "rgb(41,113,235)",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              boxShadow: "0 10px 20px rgba(37,99,235,0.35)",
+                            }}
+                          >
+                            <img
+                              src="assets/ai-avatar.png"
+                              alt="小蝶"
+                              style={{ width: 18, height: 18, borderRadius: "50%", objectFit: "cover" }}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Reveal>
                 </div>
               </section>
 
@@ -777,6 +1287,35 @@
                       )}
                       <button onClick={() => doStartOnboarding()} style={{ width: "100%", padding: "14px 20px", borderRadius: 12, border: "none", fontSize: 14, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", background: "rgb(41,113,235)", color: "#fff" }}>{authTab === "login" ? "登录并开始" : "注册并开始"}</button>
                       <button onClick={() => setShowAuthModal(false)} style={{ marginTop: 12, width: "100%", padding: "10px", border: "none", background: "none", fontSize: 13, color: "#9ca3af", cursor: "pointer", fontFamily: "inherit" }}>取消</button>
+                      <div style={{ fontSize: 12, color: "#9ca3af", textAlign: "center", marginTop: 12, marginBottom: 10 }}>或使用全球账号快速开始</div>
+                      <div style={{ display: "flex", justifyContent: "center", gap: 10, marginBottom: 16 }}>
+                        {[
+                          { key: "google", label: "G", bg: "#ffffff", border: "#e5e7eb" },
+                          { key: "apple", label: "", bg: "#111827", border: "#111827", color: "#ffffff" },
+                          { key: "microsoft", label: "MS", bg: "#ffffff", border: "#e5e7eb" },
+                        ].map((p) => (
+                          <button
+                            key={p.key}
+                            type="button"
+                            style={{
+                              width: 36,
+                              height: 36,
+                              borderRadius: "999px",
+                              border: `1px solid ${p.border}`,
+                              background: p.bg,
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              fontSize: p.key === "apple" ? 18 : 13,
+                              fontWeight: 600,
+                              color: p.color || "#111827",
+                              cursor: "pointer",
+                            }}
+                          >
+                            {p.label}
+                          </button>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -805,7 +1344,7 @@
         // ═══════════════════════════════════════════════════════
         if (phase === "dashboard") {
           return (
-            <div style={{ minHeight: "100vh", background: "#fafafa", color: "#111827", fontFamily: "'DM Sans', 'Noto Sans SC', sans-serif", display: "flex" }}>
+            <div style={{ minHeight: "100vh", background: "#fafafa", color: "#111827", fontFamily: "'DM Sans', 'Noto Sans SC', sans-serif", display: "flex", position: "relative" }}>
               <style>{globalCSS}</style>
               <div style={{ width: sidebarCollapsed ? 72 : 240, minWidth: sidebarCollapsed ? 72 : 240, background: "#fff", borderRight: "1px solid #e5e7eb", display: "flex", flexDirection: "column", flexShrink: 0, transition: "width 0.25s ease" }}>
                 <div style={{ height: 56, display: "flex", alignItems: "center", gap: 10, padding: "0 16px", borderBottom: "1px solid #e5e7eb" }}>
@@ -836,20 +1375,8 @@
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
                     <span style={{ cursor: "pointer", color: "#6b7280", fontSize: 18 }}>🔍</span>
-                    <div style={{ position: "relative" }}>
-                      <span onClick={() => setShowExpandMenu((v) => !v)} style={{ cursor: "pointer", color: "#6b7280", fontSize: 18 }}>⊞</span>
-                      {showExpandMenu && (
-                        <>
-                          <div style={{ position: "fixed", inset: 0, zIndex: 50 }} onClick={() => setShowExpandMenu(false)} aria-hidden="true" />
-                          <div style={{ position: "absolute", right: 0, top: "100%", marginTop: 6, minWidth: 180, background: "#fff", border: "1px solid #e5e7eb", borderRadius: 12, boxShadow: "0 10px 40px rgba(0,0,0,0.12)", zIndex: 51, padding: "8px 0", overflow: "hidden" }}>
-                            <a href="#subscription" onClick={() => setShowExpandMenu(false)} style={{ display: "block", padding: "10px 16px", fontSize: 14, color: "#374151", textDecoration: "none", cursor: "pointer" }}>查看订阅订单</a>
-                            <a href="#payment" onClick={() => setShowExpandMenu(false)} style={{ display: "block", padding: "10px 16px", fontSize: 14, color: "#374151", textDecoration: "none", cursor: "pointer" }}>支付方式</a>
-                            <a href="#history" onClick={() => setShowExpandMenu(false)} style={{ display: "block", padding: "10px 16px", fontSize: 14, color: "#374151", textDecoration: "none", cursor: "pointer" }}>交易历史</a>
-                          </div>
-                        </>
-                      )}
-                    </div>
-                    <span style={{ cursor: "pointer", color: "#6b7280", fontSize: 18 }}>⚙</span>
+                    <div />
+                    <span onClick={() => setShowSettingsPanel(true)} style={{ cursor: "pointer", color: "#6b7280", fontSize: 18 }}>⚙</span>
                     <span style={{ cursor: "pointer", color: "#6b7280", fontSize: 16 }}>?</span>
                     <div style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer" }}>
                       <div style={{ width: 32, height: 32, borderRadius: "50%", background: "linear-gradient(135deg, rgb(41,113,235), #4f8df5)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700, color: "#fff" }}>张</div>
@@ -870,45 +1397,255 @@
                     </div>
                   )}
                   <div style={{ maxWidth: 800, margin: "0 auto", paddingTop: 24 }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 20, marginBottom: 28 }}>
-                      <div style={{ width: 64, height: 64, borderRadius: "50%", background: "linear-gradient(135deg, rgba(41,113,235,0.2), rgba(79,141,245,0.15))", border: "2px solid rgba(41,113,235,0.25)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 28, flexShrink: 0 }}>✦</div>
-                      <div>
-                        <div style={{ fontSize: 22, fontWeight: 700, color: "#111827" }}>你好，我是星辰</div>
-                        <div style={{ fontSize: 13, color: "#6b7280", marginTop: 4 }}>你的智能经营助手，随时为你效劳</div>
-                      </div>
-                    </div>
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 24 }}>
-                      {DASHBOARD_QUICK_ACTIONS.map((q) => (
-                        <button key={q.label} style={{ display: "flex", alignItems: "center", gap: 8, padding: "12px 18px", borderRadius: 12, border: "1px solid #e5e7eb", background: "#fff", color: "#374151", fontSize: 13, fontWeight: 500, cursor: "pointer", fontFamily: "inherit" }}>
-                          <span style={{ fontSize: 16 }}>{q.icon}</span>{q.label}
-                        </button>
-                      ))}
-                    </div>
-                    <div style={{ marginBottom: 24 }}>
-                      <div style={{ display: "flex", alignItems: "center", padding: "14px 20px", borderRadius: 16, border: "1px solid #e5e7eb", background: "#fff", boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}>
-                        <span style={{ fontSize: 18, color: "#9ca3af", marginRight: 12 }}>🔍</span>
-                        <input type="text" placeholder="搜索或向星辰提问..." style={{ flex: 1, border: "none", outline: "none", fontSize: 14, color: "#111827", background: "transparent", fontFamily: "inherit" }} />
-                        <span style={{ fontSize: 18, color: "rgb(41,113,235)", cursor: "pointer" }}>✈</span>
-                      </div>
-                    </div>
-                    <div style={{ display: "flex", gap: 24, marginBottom: 20, borderBottom: "1px solid #e5e7eb" }}>
-                      {["任务", "业务提效"].map((t) => (
-                        <button key={t} onClick={() => setDashboardTab(t)} style={{ padding: "12px 0", fontSize: 14, fontWeight: 600, color: dashboardTab === t ? "rgb(41,113,235)" : "#6b7280", border: "none", borderBottom: dashboardTab === t ? "2px solid rgb(41,113,235)" : "2px solid transparent", background: "none", cursor: "pointer", fontFamily: "inherit", marginBottom: -1 }}>{t}</button>
-                      ))}
-                    </div>
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
-                      {DASHBOARD_CARDS.map((c) => (
-                        <div key={c.title} style={{ background: "#fff", border: "1px solid #e5e7eb", borderRadius: 16, padding: "24px 20px", display: "flex", flexDirection: "column", alignItems: "flex-start", boxShadow: "0 1px 3px rgba(0,0,0,0.05)", cursor: "pointer" }}>
-                          <div style={{ fontSize: 32, marginBottom: 16 }}>{c.icon}</div>
-                          <div style={{ fontSize: 15, fontWeight: 700, color: "#111827", marginBottom: 10 }}>{c.title}</div>
-                          <div style={{ fontSize: 13, color: "#6b7280", lineHeight: 1.6, flex: 1, marginBottom: 16 }}>{c.desc}</div>
-                          <button style={{ padding: "8px 18px", borderRadius: 10, border: "none", background: "rgb(41,113,235)", color: "#fff", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>{c.btn}</button>
+                    {dashboardSection === "home" && (
+                      <>
+                        <div style={{ display: "flex", alignItems: "center", gap: 20, marginBottom: 28 }}>
+                          <div style={{ width: 64, height: 64, borderRadius: "50%", background: "linear-gradient(135deg, rgba(41,113,235,0.2), rgba(79,141,245,0.15))", border: "2px solid rgba(41,113,235,0.25)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 28, flexShrink: 0 }}>✦</div>
+                          <div>
+                            <div style={{ fontSize: 22, fontWeight: 700, color: "#111827" }}>你好，我是星辰</div>
+                            <div style={{ fontSize: 13, color: "#6b7280", marginTop: 4 }}>你的智能经营助手，随时为你效劳</div>
+                          </div>
                         </div>
-                      ))}
-                    </div>
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 24 }}>
+                          {DASHBOARD_QUICK_ACTIONS.map((q) => (
+                            <button key={q.label} style={{ display: "flex", alignItems: "center", gap: 8, padding: "12px 18px", borderRadius: 12, border: "1px solid #e5e7eb", background: "#fff", color: "#374151", fontSize: 13, fontWeight: 500, cursor: "pointer", fontFamily: "inherit" }}>
+                              <span style={{ fontSize: 16 }}>{q.icon}</span>{q.label}
+                            </button>
+                          ))}
+                        </div>
+                        <div style={{ marginBottom: 24 }}>
+                          <div style={{ display: "flex", alignItems: "center", padding: "14px 20px", borderRadius: 16, border: "1px solid #e5e7eb", background: "#fff", boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}>
+                            <span style={{ fontSize: 18, color: "#9ca3af", marginRight: 12 }}>🔍</span>
+                            <input type="text" placeholder="搜索或向星辰提问..." style={{ flex: 1, border: "none", outline: "none", fontSize: 14, color: "#111827", background: "transparent", fontFamily: "inherit" }} />
+                            <span style={{ fontSize: 18, color: "rgb(41,113,235)", cursor: "pointer" }}>✈</span>
+                          </div>
+                        </div>
+                        <div style={{ display: "flex", gap: 24, marginBottom: 20, borderBottom: "1px solid #e5e7eb" }}>
+                          {["任务", "业务提效"].map((t) => (
+                            <button key={t} onClick={() => setDashboardTab(t)} style={{ padding: "12px 0", fontSize: 14, fontWeight: 600, color: dashboardTab === t ? "rgb(41,113,235)" : "#6b7280", border: "none", borderBottom: dashboardTab === t ? "2px solid rgb(41,113,235)" : "2px solid transparent", background: "none", cursor: "pointer", fontFamily: "inherit", marginBottom: -1 }}>{t}</button>
+                          ))}
+                        </div>
+                        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
+                          {DASHBOARD_CARDS.map((c) => (
+                            <div key={c.title} style={{ background: "#fff", border: "1px solid #e5e7eb", borderRadius: 16, padding: "24px 20px", display: "flex", flexDirection: "column", alignItems: "flex-start", boxShadow: "0 1px 3px rgba(0,0,0,0.05)", cursor: "pointer" }}>
+                              <div style={{ fontSize: 32, marginBottom: 16 }}>{c.icon}</div>
+                              <div style={{ fontSize: 15, fontWeight: 700, color: "#111827", marginBottom: 10 }}>{c.title}</div>
+                              <div style={{ fontSize: 13, color: "#6b7280", lineHeight: 1.6, flex: 1, marginBottom: 16 }}>{c.desc}</div>
+                              <button style={{ padding: "8px 18px", borderRadius: 10, border: "none", background: "rgb(41,113,235)", color: "#fff", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>{c.btn}</button>
+                            </div>
+                          ))}
+                        </div>
+                      </>
+                    )}
+
+                    {dashboardSection === "billing" && (
+                      <div style={{ paddingTop: 8 }}>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 18 }}>
+                          <div>
+                            <div style={{ fontSize: 12, fontWeight: 600, color: "#9ca3af", letterSpacing: 1 }}>BILLING</div>
+                            <div style={{ fontSize: 20, fontWeight: 700, color: "#111827", marginTop: 4 }}>订阅与账单</div>
+                          </div>
+                          <button
+                            onClick={() => setDashboardSection("home")}
+                            style={{ padding: "8px 14px", borderRadius: 999, border: "1px solid #e5e7eb", background: "#f9fafb", fontSize: 12, color: "#4b5563", cursor: "pointer", fontFamily: "inherit" }}
+                          >
+                            返回概览
+                          </button>
+                        </div>
+
+                        <div
+                          style={{
+                            borderRadius: 16,
+                            border: "1px solid rgba(148,163,184,0.4)",
+                            background: "linear-gradient(135deg, #f9fafb, #eff6ff)",
+                            padding: "16px 18px 14px",
+                            marginBottom: 16,
+                            display: "flex",
+                            justifyContent: "space-between",
+                            gap: 16,
+                          }}
+                        >
+                          <div>
+                            <div style={{ fontSize: 13, fontWeight: 600, color: "#6b7280", marginBottom: 4 }}>当前套餐</div>
+                            <div style={{ fontSize: 18, fontWeight: 800, color: "#111827", marginBottom: 4 }}>星辰 Pro · 年付</div>
+                            <div style={{ fontSize: 12, color: "#6b7280" }}>下次扣费日期：2026-04-01 · 将从默认支付方式自动扣款</div>
+                          </div>
+                          <div style={{ textAlign: "right" }}>
+                            <div style={{ fontSize: 12, color: "#6b7280", marginBottom: 4 }}>年费</div>
+                            <div style={{ fontSize: 20, fontWeight: 800, color: "#111827" }}>¥2,990</div>
+                            <div style={{ marginTop: 6, fontSize: 11, color: "#22c55e" }}>试用期内 · 暂不扣款</div>
+                          </div>
+                        </div>
+
+                        <div
+                          style={{
+                            borderRadius: 14,
+                            border: "1px solid #e5e7eb",
+                            background: "#ffffff",
+                            padding: "12px 14px 8px",
+                            marginBottom: 14,
+                          }}
+                        >
+                          <div style={{ fontSize: 13, fontWeight: 600, color: "#111827", marginBottom: 6 }}>默认支付方式</div>
+                          <div style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 13, color: "#4b5563", marginBottom: 4 }}>
+                            <div
+                              style={{
+                                width: 36,
+                                height: 24,
+                                borderRadius: 6,
+                                background: "linear-gradient(135deg, #0f172a, #4b5563)",
+                                color: "#fff",
+                                fontSize: 11,
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                fontWeight: 700,
+                              }}
+                            >
+                              VISA
+                            </div>
+                            <span>尾号 1234 · 06 / 28</span>
+                            <span style={{ fontSize: 11, color: "#9ca3af" }}>公司信用卡</span>
+                          </div>
+                          <div style={{ fontSize: 11, color: "#9ca3af" }}>可在正式接入时支持多张卡、企业网银等方式。</div>
+                        </div>
+
+                        <div
+                          style={{
+                            borderRadius: 14,
+                            border: "1px solid #e5e7eb",
+                            background: "#ffffff",
+                            padding: "12px 14px 8px",
+                          }}
+                        >
+                          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
+                            <div style={{ fontSize: 13, fontWeight: 600, color: "#111827" }}>历史账单</div>
+                            <span style={{ fontSize: 11, color: "#9ca3af" }}>最近 3 个月</span>
+                          </div>
+                          <div style={{ borderTop: "1px solid #e5e7eb" }}>
+                            {[
+                              { id: "INV-2026-03-001", date: "2026-03-01", amount: "¥299.00", status: "已支付" },
+                              { id: "INV-2026-02-001", date: "2026-02-01", amount: "¥299.00", status: "已支付" },
+                            ].map((inv) => (
+                              <div key={inv.id} style={{ display: "flex", alignItems: "center", padding: "8px 0", borderBottom: "1px solid #f3f4f6", fontSize: 12, color: "#4b5563" }}>
+                                <div style={{ flex: 1 }}>{inv.id}</div>
+                                <div style={{ width: 100 }}>{inv.date}</div>
+                                <div style={{ width: 80, textAlign: "right" }}>{inv.amount}</div>
+                                <div style={{ width: 70, textAlign: "center", color: "#16a34a" }}>{inv.status}</div>
+                                <div style={{ width: 80, textAlign: "right", color: "#2563eb", cursor: "pointer" }}>查看发票</div>
+                              </div>
+                            ))}
+                          </div>
+                          <div style={{ marginTop: 6, fontSize: 11, color: "#9ca3af" }}>更多账单与发票明细可在正式产品中接入下载功能。</div>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
+
+              {showSettingsPanel && (
+                <div style={{ position: "fixed", inset: 0, zIndex: 500, pointerEvents: "none" }}>
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: 72,
+                      right: 32,
+                      maxWidth: 1040,
+                      width: "min(1040px, calc(100vw - 80px))",
+                      background: "#ffffff",
+                      borderRadius: 16,
+                      boxShadow: "0 18px 60px rgba(15,23,42,0.24)",
+                      border: "1px solid rgba(148,163,184,0.6)",
+                      padding: "20px 22px 18px",
+                      display: "flex",
+                      flexDirection: "column",
+                      overflow: "hidden",
+                      pointerEvents: "auto",
+                    }}
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
+                      <div>
+                        <div style={{ fontSize: 12, fontWeight: 600, color: "#6b7280", letterSpacing: 1 }}>控制面板</div>
+                        <div style={{ fontSize: 18, fontWeight: 700, color: "#111827", marginTop: 2 }}>工作区设置</div>
+                      </div>
+                      <button
+                        onClick={() => setShowSettingsPanel(false)}
+                        style={{ border: "none", background: "none", fontSize: 20, cursor: "pointer", color: "#9ca3af", padding: 4 }}
+                        aria-label="关闭"
+                      >
+                        ×
+                      </button>
+                    </div>
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(4, minmax(0, 1fr))", gap: 20, paddingTop: 4, paddingBottom: 4, borderTop: "1px solid #e5e7eb" }}>
+                      <div>
+                        <div style={{ fontSize: 13, fontWeight: 700, color: "#111827", marginBottom: 10 }}>设置</div>
+                        <ul style={{ listStyle: "none", padding: 0, margin: 0, fontSize: 12, color: "#6b7280", lineHeight: 1.7 }}>
+                          <li>界面与语言</li>
+                          <li>通知与提醒</li>
+                          <li>安全与登录</li>
+                          <li>偏好设置</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <div style={{ fontSize: 13, fontWeight: 700, color: "#111827", marginBottom: 10 }}>数据</div>
+                        <ul style={{ listStyle: "none", padding: 0, margin: 0, fontSize: 12, color: "#6b7280", lineHeight: 1.7 }}>
+                          <li>数据源与同步</li>
+                          <li>导入 / 导出</li>
+                          <li>备份与恢复</li>
+                          <li>数据权限</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <div style={{ fontSize: 13, fontWeight: 700, color: "#111827", marginBottom: 10 }}>工具</div>
+                        <ul style={{ listStyle: "none", padding: 0, margin: 0, fontSize: 12, color: "#6b7280", lineHeight: 1.7 }}>
+                          <li>集成与插件</li>
+                          <li>自动化流程</li>
+                          <li>API 访问</li>
+                          <li>调试与日志</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <div style={{ fontSize: 13, fontWeight: 700, color: "#111827", marginBottom: 10 }}>公司信息</div>
+                        <ul style={{ listStyle: "none", padding: 0, margin: 0, fontSize: 12, color: "#6b7280", lineHeight: 1.7 }}>
+                          <li>公司档案</li>
+                          <li>成员与角色</li>
+                          <li
+                            onClick={() => {
+                              setDashboardSection("billing");
+                              setShowSettingsPanel(false);
+                            }}
+                            style={{ cursor: "pointer", color: "#2563eb", fontWeight: 500 }}
+                          >
+                            订阅与账单
+                          </li>
+                          <li>发票信息</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div style={{ marginTop: 12, paddingTop: 8, borderTop: "1px solid #e5e7eb", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                      <div style={{ fontSize: 11, color: "#9ca3af" }}>以上入口为占位展示，具体设置能力可按需接入。</div>
+                      <button
+                        onClick={() => setShowSettingsPanel(false)}
+                        style={{
+                          borderRadius: 999,
+                          border: "1px solid rgba(148,163,184,0.8)",
+                          background: "#f9fafb",
+                          padding: "6px 14px",
+                          fontSize: 12,
+                          fontWeight: 500,
+                          color: "#4b5563",
+                          cursor: "pointer",
+                          fontFamily: "inherit",
+                        }}
+                      >
+                        知道了
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
             {showUpgradeModal && (
               <div style={{ position: "fixed", inset: 0, zIndex: 300, display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
                 <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.4)", cursor: "pointer" }} onClick={() => setShowUpgradeModal(false)} aria-hidden="true" />
@@ -1021,7 +1758,7 @@
                   )}
               </div>
             </div>
-            {showAuthModal && (
+            {false && showAuthModal && (
               <div style={{ position: "fixed", inset: 0, zIndex: 400, display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
                 <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.5)", cursor: "pointer" }} onClick={() => setShowAuthModal(false)} aria-hidden="true" />
                 <div style={{ position: "relative", display: "flex", maxWidth: 440, width: "100%", background: "#fff", borderRadius: 24, boxShadow: "0 24px 64px rgba(0,0,0,0.2)", overflow: "hidden", border: "1px solid #e5e7eb" }} onClick={(e) => e.stopPropagation()}>
@@ -1045,6 +1782,64 @@
                         <input type="password" placeholder="确认密码" style={{ width: "100%", padding: "12px 14px", borderRadius: 10, border: "1px solid #e5e7eb", fontSize: 14, marginBottom: 20, fontFamily: "inherit", boxSizing: "border-box" }} />
                       </>
                     )}
+                    <div style={{ fontSize: 12, color: "#9ca3af", textAlign: "center", marginBottom: 10 }}>或使用全球账号快速开始</div>
+                    <div style={{ display: "flex", justifyContent: "center", gap: 10, marginBottom: 16 }}>
+                      {[
+                        { key: "google", label: "G", bg: "#ffffff", border: "#e5e7eb" },
+                        { key: "apple", label: "", bg: "#111827", border: "#111827", color: "#ffffff" },
+                        { key: "microsoft", label: "MS", bg: "#ffffff", border: "#e5e7eb" },
+                      ].map((p) => (
+                        <button
+                          key={p.key}
+                          type="button"
+                          style={{
+                            width: 36,
+                            height: 36,
+                            borderRadius: "999px",
+                            border: `1px solid ${p.border}`,
+                            background: p.bg,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            fontSize: p.key === "apple" ? 18 : 13,
+                            fontWeight: 600,
+                            color: p.color || "#111827",
+                            cursor: "pointer",
+                          }}
+                        >
+                          {p.label}
+                        </button>
+                      ))}
+                    </div>
+                    <div style={{ fontSize: 12, color: "#9ca3af", textAlign: "center", marginBottom: 10 }}>或使用全球账号快速开始</div>
+                    <div style={{ display: "flex", justifyContent: "center", gap: 10, marginBottom: 16 }}>
+                      {[
+                        { key: "google", label: "G", bg: "#ffffff", border: "#e5e7eb" },
+                        { key: "apple", label: "", bg: "#111827", border: "#111827", color: "#ffffff" },
+                        { key: "microsoft", label: "MS", bg: "#ffffff", border: "#e5e7eb" },
+                      ].map((p) => (
+                        <button
+                          key={p.key}
+                          type="button"
+                          style={{
+                            width: 36,
+                            height: 36,
+                            borderRadius: "999px",
+                            border: `1px solid ${p.border}`,
+                            background: p.bg,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            fontSize: p.key === "apple" ? 18 : 13,
+                            fontWeight: 600,
+                            color: p.color || "#111827",
+                            cursor: "pointer",
+                          }}
+                        >
+                          {p.label}
+                        </button>
+                      ))}
+                    </div>
                     <button onClick={() => doStartOnboarding("免费试用")} style={{ width: "100%", padding: "14px 20px", borderRadius: 12, border: "none", fontSize: 14, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", background: "rgb(41,113,235)", color: "#fff" }}>{authTab === "login" ? "登录并开始" : "注册并开始"}</button>
                     <button onClick={() => setShowAuthModal(false)} style={{ marginTop: 12, width: "100%", padding: "10px", border: "none", background: "none", fontSize: 13, color: "#9ca3af", cursor: "pointer", fontFamily: "inherit" }}>取消</button>
                   </div>
@@ -1062,7 +1857,8 @@
         return (
           <div style={{ minHeight: "100vh", background: "#ffffff", color: "#111827", fontFamily: "'DM Sans', 'Noto Sans SC', sans-serif" }}>
             <style>{globalCSS}</style>
-            <div style={{ display: "flex", height: "100vh", paddingTop: 0 }}>
+            <Nav onTrial={() => openAuthModal()} onPrice={() => setPhase("upgrade")} />
+            <div style={{ display: "flex", minHeight: "calc(100vh - 60px)", paddingTop: 60, background: "#ffffff" }}>
               <div style={{ flex: 1, display: "flex", flexDirection: "column", borderRight: "1px solid rgba(41,113,235,0.12)" }}>
                 <div style={{ flex: 1, overflowY: "auto", padding: "32px 28px", display: "flex", flexDirection: "column", gap: 20, background: "linear-gradient(180deg, rgba(41,113,235,0.03) 0%, transparent 12%)" }}>
                   {messages.map((m, i) => (
@@ -1121,9 +1917,41 @@
                 )}
               </div>
               {showAgent && (
-                <div style={{ width: "42%", minWidth: 340, background: "#f9fafb", borderLeft: "1px solid rgba(41,113,235,0.1)", overflowY: "auto", animation: "slideInRight 0.6s ease-out" }}>
-                  <div style={{ padding: "32px 28px" }}>
-                    <div style={{ textAlign: "center", marginBottom: 28 }}>
+                <div style={{ width: "42%", minWidth: 340, background: "#f9fafb", borderLeft: "1px solid rgba(41,113,235,0.12)", overflowY: "auto", animation: "slideInRight 0.6s ease-out" }}>
+                  <div style={{ padding: "24px 24px 28px" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                        <img src="assets/kingdee-ai-logo.png" alt="金蝶 AI" style={{ height: 24, width: "auto", display: "block", objectFit: "contain" }} />
+                      </div>
+                      <button
+                        onClick={() => {
+                          setPhase("landing");
+                          setStep(0);
+                          setMessages([]);
+                          setTyping(false);
+                          setShowAgent(false);
+                          setPct(0);
+                          setActiveTags([]);
+                        }}
+                        style={{
+                          borderRadius: 999,
+                          border: "1px solid rgba(148,163,184,0.7)",
+                          background: "rgba(248,250,252,0.96)",
+                          padding: "4px 12px",
+                          fontSize: 11,
+                          color: "rgba(55,65,81,0.9)",
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 6,
+                          cursor: "pointer",
+                          fontFamily: "inherit",
+                        }}
+                      >
+                        <span style={{ fontSize: 13 }}>←</span>
+                        返回首页
+                      </button>
+                    </div>
+                    <div style={{ textAlign: "center", marginBottom: 24 }}>
                       <div style={{ display: "inline-block", animation: "floatY 3s ease-in-out infinite" }}><PulseRing size={90} /></div>
                       <h3 style={{ fontSize: 20, fontWeight: 800, marginTop: 16, marginBottom: 4, background: "linear-gradient(135deg, #0f172a 0%, rgb(41,113,235) 50%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>你的专属星辰</h3>
                       <p style={{ fontSize: 13, color: "rgba(17,24,39,0.6)", margin: 0 }}>根据你的回答，正在为你量身定制～</p>
@@ -1230,14 +2058,14 @@
     ];
 
     const INDUSTRIES = [
-      { icon: "🍜", name: "食品饮料", desc: "保质期管理 · 批次追溯 · 渠道分销", bg: "linear-gradient(135deg, #ff9a56 0%, #ff6b6b 100%)" },
-      { icon: "📱", name: "家电数码", desc: "串号管理 · 售后追踪 · 渠道库存", bg: "linear-gradient(135deg, #63b6ff 0%, #5b7fff 100%)" },
-      { icon: "🔌", name: "电子元器件", desc: "料号管理 · 替代料匹配 · MOQ优化", bg: "linear-gradient(135deg, #00e4a0 0%, #00b4d8 100%)" },
-      { icon: "🔩", name: "五金配件", desc: "多规格SKU · 称重计价 · 来料加工", bg: "linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)" },
-      { icon: "🏠", name: "家装建材", desc: "项目制管理 · 工程报价 · 安装派单", bg: "linear-gradient(135deg, #a78bfa 0%, #818cf8 100%)" },
-      { icon: "⚙️", name: "机械设备", desc: "BOM深度管理 · 工序成本 · 售后合同", bg: "linear-gradient(135deg, #6ee7b7 0%, #34d399 100%)" },
-      { icon: "💼", name: "商业服务", desc: "项目工时 · 服务合同 · 收款进度", bg: "linear-gradient(135deg, #f0abfc 0%, #c084fc 100%)" },
-      { icon: "🛒", name: "电子商务", desc: "多平台订单 · 仓储物流 · 退换货", bg: "linear-gradient(135deg, #fb923c 0%, #f43f5e 100%)" },
+      { label: "食品", name: "食品饮料", desc: "保质期管理 · 批次追溯 · 渠道分销", bg: "linear-gradient(135deg, #ff9a56 0%, #ff6b6b 100%)", image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=600&auto=format&fit=crop&q=80" },
+      { label: "家电", name: "家电数码", desc: "串号管理 · 售后追踪 · 渠道库存", bg: "linear-gradient(135deg, #63b6ff 0%, #5b7fff 100%)", image: "https://images.unsplash.com/photo-1498049794561-7780e7231661?w=600&auto=format&fit=crop&q=80" },
+      { label: "电子", name: "电子元器件", desc: "料号管理 · 替代料匹配 · MOQ优化", bg: "linear-gradient(135deg, #00e4a0 0%, #00b4d8 100%)", image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&auto=format&fit=crop&q=80" },
+      { label: "五金", name: "五金配件", desc: "多规格SKU · 称重计价 · 来料加工", bg: "linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)", image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&auto=format&fit=crop&q=80" },
+      { label: "家装", name: "家装建材", desc: "项目制管理 · 工程报价 · 安装派单", bg: "linear-gradient(135deg, #a78bfa 0%, #818cf8 100%)", image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&auto=format&fit=crop&q=80" },
+      { label: "机械", name: "机械设备", desc: "BOM深度管理 · 工序成本 · 售后合同", bg: "linear-gradient(135deg, #6ee7b7 0%, #34d399 100%)", image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&auto=format&fit=crop&q=80" },
+      { label: "商业", name: "商业服务", desc: "项目工时 · 服务合同 · 收款进度", bg: "linear-gradient(135deg, #f0abfc 0%, #c084fc 100%)", image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop&q=80" },
+      { label: "电商", name: "电子商务", desc: "多平台订单 · 仓储物流 · 退换货", bg: "linear-gradient(135deg, #fb923c 0%, #f43f5e 100%)", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&auto=format&fit=crop&q=80" },
     ];
 
     const PRODUCTS = [
@@ -1425,8 +2253,8 @@
       return (
         <div style={{ textAlign: "center", marginBottom: 48 }}>
           {tag && <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: 3, color: "#63b6ff", textTransform: "uppercase", marginBottom: 12 }}>{tag}</div>}
-          <h2 style={{ fontSize: 36, fontWeight: 800, margin: 0, background: "linear-gradient(135deg, #fff 40%, #63b6ff)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", lineHeight: 1.3 }}>{title}</h2>
-          {subtitle && <p style={{ fontSize: 16, color: "rgba(255,255,255,0.45)", marginTop: 12, maxWidth: 560, marginLeft: "auto", marginRight: "auto", lineHeight: 1.7 }}>{subtitle}</p>}
+          <h2 style={{ fontSize: 36, fontWeight: 800, margin: 0, background: "linear-gradient(135deg, #fff 40%, #63b6ff)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", lineHeight: 1.3, maxWidth: "100%", overflowWrap: "break-word", wordBreak: "break-word" }}>{title}</h2>
+          {subtitle && <p style={{ fontSize: 16, color: "rgba(255,255,255,0.45)", marginTop: 12, maxWidth: 560, marginLeft: "auto", marginRight: "auto", lineHeight: 1.7, overflowWrap: "break-word", wordBreak: "break-word" }}>{subtitle}</p>}
         </div>
       );
     }
@@ -1468,7 +2296,7 @@
       const [trialBannerDismissed, setTrialBannerDismissed] = useState(false);
       const [showUpgradeModal, setShowUpgradeModal] = useState(false);
       const [showAuthModal, setShowAuthModal] = useState(false);
-      const [authTab, setAuthTab] = useState("login");
+      const [authTab, setAuthTab] = useState("register");
       const [showExpandMenu, setShowExpandMenu] = useState(false);
       const [followUpIndex, setFollowUpIndex] = useState(0);
       const [billingCycle, setBillingCycle] = useState("annual");
@@ -1490,8 +2318,8 @@
           setTimeout(() => { setTyping(false); setMessages((p) => [...p, { role: "ai", text: ONBOARDING_STEPS[0].question }]); }, 800);
         }, 400);
       }, []);
-      const openAuthModal = useCallback(() => setShowAuthModal(true), []);
       const doStartOnboarding = useCallback((chipText) => { setShowAuthModal(false); startOnboarding(chipText); }, [startOnboarding]);
+      const openAuthModal = useCallback(() => doStartOnboarding("免费试用"), [doStartOnboarding]);
 
       const startDiscover = useCallback(() => {
         setPhase("discover");
@@ -1670,7 +2498,7 @@
               <div style={{ position: "absolute", top: "-20%", left: "50%", transform: "translateX(-50%)", width: "140%", height: "80%", background: "radial-gradient(ellipse, rgba(99,182,255,0.08) 0%, transparent 70%)", pointerEvents: "none" }} />
               <Reveal><div style={{ display: "flex", justifyContent: "center", marginBottom: 28 }}><div style={{ animation: "floatY 4s ease-in-out infinite" }}><PulseRing size={130} /></div></div></Reveal>
               <Reveal delay={0.1}><h1 style={{ fontSize: 52, fontWeight: 800, textAlign: "center", letterSpacing: -1.5, lineHeight: 1.2, background: "linear-gradient(135deg, #fff 20%, #63b6ff 60%, #00e4a0 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", margin: "0 0 16px" }}>你好，欢迎你</h1></Reveal>
-              <Reveal delay={0.2}><p style={{ fontSize: 18, color: "rgba(255,255,255,0.5)", textAlign: "center", maxWidth: 480, margin: "0 auto 36px", lineHeight: 1.7 }}>回答 5 个问题，2 分钟获得你的 AI 商业管理伙伴</p></Reveal>
+              <Reveal delay={0.2}><p style={{ fontSize: 18, color: "rgba(255,255,255,0.5)", textAlign: "center", maxWidth: 480, margin: "0 auto 36px", lineHeight: 1.7 }}>专属于你的AI星辰</p></Reveal>
               <Reveal delay={0.3}>
                 <div onClick={() => openAuthModal()} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: 540, maxWidth: "90vw", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 28, padding: "16px 22px", fontSize: 15, cursor: "pointer" }}>
                   <span style={{ color: "rgba(255,255,255,0.3)" }}>想要管好库存？告诉星辰你的需求…</span>
@@ -1706,7 +2534,7 @@
                   <Reveal key={ind.name} delay={i * 0.06}>
                     <div onMouseEnter={() => setHoveredIndustry(i)} onMouseLeave={() => setHoveredIndustry(null)} style={{ position: "relative", borderRadius: 20, padding: "36px 24px 28px", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)", cursor: "pointer", transition: "all 0.35s", transform: hoveredIndustry === i ? "translateY(-6px)" : "none", overflow: "hidden" }}>
                       <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: ind.bg, opacity: hoveredIndustry === i ? 1 : 0.3, transition: "opacity 0.3s" }} />
-                      <div style={{ fontSize: 40, marginBottom: 16 }}>{ind.icon}</div>
+                      <div style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 48, height: 48, borderRadius: 12, background: ind.bg, color: "#fff", fontSize: 15, fontWeight: 700, marginBottom: 16 }}>{ind.label}</div>
                       <div style={{ fontSize: 17, fontWeight: 700, color: "#fff", marginBottom: 8 }}>{ind.name}</div>
                       <div style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", lineHeight: 1.7 }}>{ind.desc}</div>
                     </div>
@@ -1715,24 +2543,187 @@
               </div>
             </section>
             <section style={{ padding: "100px 20px", maxWidth: 1200, margin: "0 auto" }}>
-              <Reveal><SectionTitle tag="产品矩阵" title="总有一款适合你的企业" subtitle="从个体户到成长型企业，星辰产品家族为每个阶段量身打造" /></Reveal>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24, alignItems: "stretch" }}>
-                {PRODUCTS.map((p, i) => (
-                  <Reveal key={p.name} delay={i * 0.1}>
-                    <div style={{ position: "relative", borderRadius: 24, padding: "36px 32px 32px", background: p.highlighted ? "rgba(255,255,255,0.04)" : "rgba(255,255,255,0.02)", border: `1px solid ${p.highlighted ? p.color + "30" : "rgba(255,255,255,0.06)"}`, display: "flex", flexDirection: "column", overflow: "hidden", height: "100%" }}>
-                      <div style={{ position: "absolute", top: 20, right: 20, fontSize: 11, fontWeight: 700, padding: "4px 14px", borderRadius: 20, background: p.color + "18", color: p.color }}>{p.badge}</div>
-                      <div style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", fontWeight: 600, marginBottom: 8 }}>{p.target}</div>
-                      <div style={{ fontSize: 28, fontWeight: 800, color: "#fff", marginBottom: 6 }}>{p.name}</div>
-                      <div style={{ fontSize: 13, color: "rgba(255,255,255,0.5)", lineHeight: 1.7, marginBottom: 20, flex: 1 }}>{p.desc}</div>
-                      <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 24 }}>
-                        {p.features.map((f) => (
-                          <div key={f} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 13, color: "rgba(255,255,255,0.65)" }}>
-                            <span style={{ width: 18, height: 18, borderRadius: "50%", background: p.color + "18", color: p.color, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 700, flexShrink: 0 }}>✓</span>{f}
+              <Reveal>
+                <SectionTitle
+                  tag="产品矩阵"
+                  title="金蝶 AI 星辰 产品家族"
+                  subtitle="上方是旗舰「金蝶 AI 星辰」，下方是轻盈的 2 款单品，覆盖不同发展阶段"
+                />
+              </Reveal>
+              {flagshipProduct && (
+                <Reveal>
+                  <div
+                    style={{
+                      position: "relative",
+                      borderRadius: 32,
+                      padding: "40px 40px 34px",
+                      marginBottom: 32,
+                      background:
+                        "radial-gradient(circle at 10% 0%, rgba(99,182,255,0.35), transparent 55%), radial-gradient(circle at 90% 120%, rgba(192,132,252,0.35), transparent 65%), rgba(3,7,18,0.98)",
+                      border: "1px solid rgba(148,163,184,0.4)",
+                      overflow: "hidden",
+                      display: "grid",
+                      gridTemplateColumns: "minmax(0, 1.2fr) minmax(0, 1fr)",
+                      gap: 32,
+                      alignItems: "center",
+                    }}
+                  >
+                    <div style={{ position: "absolute", inset: 0, opacity: 0.2, backgroundImage: "radial-gradient(circle at 0 0, rgba(255,255,255,0.16), transparent 60%)" }} />
+                    <div style={{ position: "relative" }}>
+                      <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "4px 14px", borderRadius: 999, border: "1px solid rgba(148,163,184,0.6)", background: "rgba(15,23,42,0.8)", backdropFilter: "blur(18px)", marginBottom: 16 }}>
+                        <span style={{ fontSize: 11, fontWeight: 700, color: "rgba(209,213,219,0.95)", letterSpacing: 0.5 }}>旗舰产品 · 金蝶 AI 星辰</span>
+                      </div>
+                      <div style={{ fontSize: 30, fontWeight: 800, color: "#f9fafb", letterSpacing: -0.5, marginBottom: 10 }}>
+                        {flagshipProduct.name}
+                      </div>
+                      <div style={{ fontSize: 13, color: "rgba(209,213,219,0.86)", marginBottom: 20, lineHeight: 1.8, maxWidth: 520 }}>
+                        {flagshipProduct.desc}
+                      </div>
+                      <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 24 }}>
+                        {flagshipProduct.features.map((f) => (
+                          <div
+                            key={f}
+                            style={{
+                              display: "inline-flex",
+                              alignItems: "center",
+                              gap: 8,
+                              padding: "8px 14px",
+                              borderRadius: 999,
+                              background: "rgba(15,23,42,0.9)",
+                              border: "1px solid rgba(148,163,184,0.55)",
+                              fontSize: 12,
+                              color: "rgba(229,231,235,0.9)",
+                            }}
+                          >
+                            <span style={{ width: 16, height: 16, borderRadius: "50%", background: flagshipProduct.color + "22", color: flagshipProduct.color, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 700 }}>✓</span>
+                            {f}
                           </div>
                         ))}
                       </div>
-                      <div style={{ fontSize: 22, fontWeight: 800, color: p.color, marginBottom: 20 }}>{p.price}</div>
-                      <div onClick={() => openAuthModal()} style={{ textAlign: "center", padding: "12px 0", borderRadius: 14, fontWeight: 700, fontSize: 14, cursor: "pointer", transition: "all 0.25s", background: p.highlighted ? `linear-gradient(135deg, ${p.color}, ${p.color}cc)` : "rgba(255,255,255,0.06)", color: p.highlighted ? "#060a12" : "rgba(255,255,255,0.7)", border: `1px solid ${p.highlighted ? "transparent" : "rgba(255,255,255,0.1)"}` }}>{p.highlighted ? "立即体验" : "了解更多"}</div>
+                      <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+                        <div style={{ fontSize: 24, fontWeight: 800, color: flagshipProduct.color }}>{flagshipProduct.price}</div>
+                        <button
+                          onClick={() => openAuthModal()}
+                          style={{
+                            padding: "10px 22px",
+                            borderRadius: 999,
+                            border: "none",
+                            background: `linear-gradient(135deg, ${flagshipProduct.color}, ${flagshipProduct.color}dd)`,
+                            color: "#020617",
+                            fontSize: 14,
+                            fontWeight: 700,
+                            cursor: "pointer",
+                            fontFamily: "inherit",
+                            boxShadow: "0 12px 35px rgba(15,23,42,0.7)",
+                          }}
+                        >
+                          立即体验 金蝶 AI 星辰
+                        </button>
+                      </div>
+                    </div>
+                    <div style={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      <div
+                        style={{
+                          position: "relative",
+                          width: "100%",
+                          maxWidth: 360,
+                          aspectRatio: "4 / 3",
+                          borderRadius: 32,
+                          background: "radial-gradient(circle at 20% 0%, rgba(248,250,252,0.85), rgba(148,163,184,0.15))",
+                          boxShadow: "0 30px 120px rgba(0,0,0,0.85)",
+                          overflow: "hidden",
+                          transform: "rotate(-8deg)",
+                        }}
+                      >
+                        <div style={{ position: "absolute", inset: 16, borderRadius: 26, background: "linear-gradient(135deg, #0f172a, #020617)", border: "1px solid rgba(148,163,184,0.35)", overflow: "hidden" }}>
+                          <div style={{ padding: "14px 16px", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid rgba(31,41,55,0.9)", background: "radial-gradient(circle at 0 0, rgba(148,163,184,0.3), transparent 55%)" }}>
+                            <span style={{ fontSize: 11, color: "rgba(148,163,184,0.95)" }}>金蝶 AI 星辰 · 经营驾驶舱</span>
+                            <span style={{ width: 8, height: 8, borderRadius: "50%", background: "radial-gradient(circle at center, #22c55e, transparent)", boxShadow: "0 0 8px #22c55e" }} />
+                          </div>
+                          <div style={{ padding: "16px 16px 12px", display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 10, alignItems: "center" }}>
+                            <div>
+                              <div style={{ fontSize: 22, fontWeight: 800, color: "#e5e7eb", marginBottom: 4 }}>本月经营总览</div>
+                              <div style={{ fontSize: 11, color: "rgba(148,163,184,0.95)", marginBottom: 12 }}>库存 · 成本 · 现金流 一屏掌握</div>
+                              <div style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 11, color: "rgba(209,213,219,0.9)" }}>
+                                <div style={{ display: "flex", justifyContent: "space-between" }}><span>库存准确率</span><span>98.3%</span></div>
+                                <div style={{ display: "flex", justifyContent: "space-between" }}><span>单据自动化</span><span>82%</span></div>
+                                <div style={{ display: "flex", justifyContent: "space-between" }}><span>毛利提升</span><span>+6.4%</span></div>
+                              </div>
+                            </div>
+                            <div style={{ position: "relative", alignSelf: "stretch", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                              <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 0, rgba(59,130,246,0.6), transparent 70%)", opacity: 0.55 }} />
+                              <div
+                                style={{
+                                  position: "relative",
+                                  width: 110,
+                                  height: 110,
+                                  borderRadius: "50%",
+                                  border: "8px solid rgba(15,23,42,0.9)",
+                                  boxShadow: "0 16px 35px rgba(15,23,42,0.9)",
+                                  display: "flex",
+                                  alignItems: "center",
+                                  justifyContent: "center",
+                                  background: "conic-gradient(from 220deg, #22c55e 0 60%, rgba(30,64,175,0.6) 60% 100%)",
+                                }}
+                              >
+                                <div style={{ width: 70, height: 70, borderRadius: "50%", background: "#020617", display: "flex", alignItems: "center", justifyContent: "center", color: "#e5e7eb", fontSize: 26 }}>✦</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Reveal>
+              )}
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 24, alignItems: "stretch" }}>
+                {otherProducts.map((p, i) => (
+                  <Reveal key={p.name} delay={i * 0.08}>
+                    <div
+                      style={{
+                        position: "relative",
+                        borderRadius: 24,
+                        padding: "32px 30px 30px",
+                        background: "rgba(255,255,255,0.02)",
+                        border: "1px solid rgba(255,255,255,0.06)",
+                        display: "flex",
+                        flexDirection: "column",
+                        overflow: "hidden",
+                        height: "100%",
+                      }}
+                    >
+                      <div style={{ position: "absolute", top: 18, right: 20, fontSize: 11, fontWeight: 700, padding: "4px 14px", borderRadius: 20, background: p.color + "18", color: p.color }}>{p.badge}</div>
+                      <div style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", fontWeight: 600, marginBottom: 8 }}>{p.target}</div>
+                      <div style={{ fontSize: 24, fontWeight: 800, color: "#fff", marginBottom: 6 }}>{p.name}</div>
+                      <div style={{ fontSize: 13, color: "rgba(255,255,255,0.5)", lineHeight: 1.7, marginBottom: 18, flex: 1 }}>{p.desc}</div>
+                      <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 20 }}>
+                        {p.features.map((f) => (
+                          <div key={f} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 13, color: "rgba(255,255,255,0.65)" }}>
+                            <span style={{ width: 18, height: 18, borderRadius: "50%", background: p.color + "18", color: p.color, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 700, flexShrink: 0 }}>✓</span>
+                            {f}
+                          </div>
+                        ))}
+                      </div>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "auto" }}>
+                        <div style={{ fontSize: 20, fontWeight: 800, color: p.color }}>{p.price}</div>
+                        <div
+                          onClick={() => openAuthModal()}
+                          style={{
+                            textAlign: "center",
+                            padding: "10px 18px",
+                            borderRadius: 999,
+                            fontWeight: 700,
+                            fontSize: 13,
+                            cursor: "pointer",
+                            transition: "all 0.25s",
+                            background: "rgba(255,255,255,0.06)",
+                            color: "rgba(255,255,255,0.85)",
+                            border: "1px solid rgba(255,255,255,0.14)",
+                          }}
+                        >
+                          了解更多
+                        </div>
+                      </div>
                     </div>
                   </Reveal>
                 ))}
@@ -1780,7 +2771,7 @@
               <div style={{ marginTop: 48, paddingTop: 24, borderTop: "1px solid rgba(255,255,255,0.04)", textAlign: "center", fontSize: 12, color: "rgba(255,255,255,0.2)" }}>© 2026 星辰 AI</div>
             </footer>
           </div>
-          {showAuthModal && (
+          {false && showAuthModal && (
             <div style={{ position: "fixed", inset: 0, zIndex: 400, display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
               <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.5)", cursor: "pointer" }} onClick={() => setShowAuthModal(false)} aria-hidden="true" />
               <div style={{ position: "relative", display: "flex", maxWidth: 440, width: "100%", background: "#fff", borderRadius: 24, boxShadow: "0 24px 64px rgba(0,0,0,0.2)", overflow: "hidden", border: "1px solid #e5e7eb" }} onClick={(e) => e.stopPropagation()}>
@@ -1804,6 +2795,35 @@
                       <input type="password" placeholder="确认密码" style={{ width: "100%", padding: "12px 14px", borderRadius: 10, border: "1px solid #e5e7eb", fontSize: 14, marginBottom: 20, fontFamily: "inherit", boxSizing: "border-box" }} />
                     </>
                   )}
+                  <div style={{ fontSize: 12, color: "#9ca3af", textAlign: "center", marginBottom: 10 }}>或使用全球账号快速开始</div>
+                  <div style={{ display: "flex", justifyContent: "center", gap: 10, marginBottom: 16 }}>
+                    {[
+                      { key: "google", label: "G", bg: "#ffffff", border: "#e5e7eb" },
+                      { key: "apple", label: "", bg: "#111827", border: "#111827", color: "#ffffff" },
+                      { key: "microsoft", label: "MS", bg: "#ffffff", border: "#e5e7eb" },
+                    ].map((p) => (
+                      <button
+                        key={p.key}
+                        type="button"
+                        style={{
+                          width: 36,
+                          height: 36,
+                          borderRadius: "999px",
+                          border: `1px solid ${p.border}`,
+                          background: p.bg,
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          fontSize: p.key === "apple" ? 18 : 13,
+                          fontWeight: 600,
+                          color: p.color || "#111827",
+                          cursor: "pointer",
+                        }}
+                      >
+                        {p.label}
+                      </button>
+                    ))}
+                  </div>
                   <button onClick={() => doStartOnboarding()} style={{ width: "100%", padding: "14px 20px", borderRadius: 12, border: "none", fontSize: 14, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", background: "rgb(41,113,235)", color: "#fff" }}>{authTab === "login" ? "登录并开始" : "注册并开始"}</button>
                   <button onClick={() => setShowAuthModal(false)} style={{ marginTop: 12, width: "100%", padding: "10px", border: "none", background: "none", fontSize: 13, color: "#9ca3af", cursor: "pointer", fontFamily: "inherit" }}>取消</button>
                 </div>
@@ -1859,20 +2879,8 @@
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
                   <span style={{ cursor: "pointer", color: "#6b7280", fontSize: 18 }}>🔍</span>
-                  <div style={{ position: "relative" }}>
-                    <span onClick={() => setShowExpandMenu((v) => !v)} style={{ cursor: "pointer", color: "#6b7280", fontSize: 18 }}>⊞</span>
-                    {showExpandMenu && (
-                      <>
-                        <div style={{ position: "fixed", inset: 0, zIndex: 50 }} onClick={() => setShowExpandMenu(false)} aria-hidden="true" />
-                        <div style={{ position: "absolute", right: 0, top: "100%", marginTop: 6, minWidth: 180, background: "#fff", border: "1px solid #e5e7eb", borderRadius: 12, boxShadow: "0 10px 40px rgba(0,0,0,0.12)", zIndex: 51, padding: "8px 0", overflow: "hidden" }}>
-                          <a href="#subscription" onClick={() => setShowExpandMenu(false)} style={{ display: "block", padding: "10px 16px", fontSize: 14, color: "#374151", textDecoration: "none", cursor: "pointer" }}>查看订阅订单</a>
-                          <a href="#payment" onClick={() => setShowExpandMenu(false)} style={{ display: "block", padding: "10px 16px", fontSize: 14, color: "#374151", textDecoration: "none", cursor: "pointer" }}>支付方式</a>
-                          <a href="#history" onClick={() => setShowExpandMenu(false)} style={{ display: "block", padding: "10px 16px", fontSize: 14, color: "#374151", textDecoration: "none", cursor: "pointer" }}>交易历史</a>
-                        </div>
-                      </>
-                    )}
-                  </div>
-                  <span style={{ cursor: "pointer", color: "#6b7280", fontSize: 18 }}>⚙</span>
+                  <div />
+                  <span onClick={() => setShowSettingsPanel(true)} style={{ cursor: "pointer", color: "#6b7280", fontSize: 18 }}>⚙</span>
                   <span style={{ cursor: "pointer", color: "#6b7280", fontSize: 16 }}>?</span>
                   <div style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer" }}>
                     <div style={{ width: 32, height: 32, borderRadius: "50%", background: "linear-gradient(135deg, rgb(41,113,235), #4f8df5)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700, color: "#fff" }}>张</div>
@@ -2040,7 +3048,7 @@
                 )}
             </div>
           </div>
-          {showAuthModal && (
+          {false && showAuthModal && (
             <div style={{ position: "fixed", inset: 0, zIndex: 400, display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
               <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.5)", cursor: "pointer" }} onClick={() => setShowAuthModal(false)} aria-hidden="true" />
               <div style={{ position: "relative", display: "flex", maxWidth: 440, width: "100%", background: "#fff", borderRadius: 24, boxShadow: "0 24px 64px rgba(0,0,0,0.2)", overflow: "hidden", border: "1px solid #e5e7eb" }} onClick={(e) => e.stopPropagation()}>
